@@ -23,8 +23,8 @@
 - **Pre-condition:** <can be a list or short description> Customer has logged in 
 - **Trigger:** <can be a list or short description> 
 - **Primary Sequence:**
-  1. 
-  2.  
+  1.
+  2.
   3. 
   4. ... 
   5. ...
