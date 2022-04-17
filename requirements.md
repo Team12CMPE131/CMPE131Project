@@ -20,7 +20,31 @@
 
 ## Use Cases
 1. Use Case Name:  Add to Cart
-- **Pre-condition:** <can be a list or short description> Customer has logged in 
+- **Pre-condition:** <can be a list or short description> Customer has logged in.
+- **Trigger:** <can be a list or short description> Sellect "add to cart" option
+- **Primary Sequence:**
+  1.
+  2.
+  3. 
+  4. ... 
+  5. ...
+  6. ...
+  7. ...
+  8. ...
+  9. ...
+  
+- **Primary Postconditions:** <can be a list or short description> 
+- **Alternate Sequence:** <you can have more than one alternate sequence to 
+describe multiple issues that may arise>
+  
+  1. 
+  2. 
+  3. ...
+- **Alternate Sequence <optional>:** <you can have more than one alternate sequence
+to describe multiple issues that may arise>
+
+2. Use Case Name:  
+- **Pre-condition:** <can be a list or short description> Customer has logged in.
 - **Trigger:** <can be a list or short description> 
 - **Primary Sequence:**
   1.
@@ -42,3 +66,100 @@ describe multiple issues that may arise>
   3. ...
 - **Alternate Sequence <optional>:** <you can have more than one alternate sequence
 to describe multiple issues that may arise>
+  
+3. Use Case Name:  
+- **Pre-condition:** <can be a list or short description> Customer has logged in.
+- **Trigger:** <can be a list or short description> 
+- **Primary Sequence:**
+  1.
+  2.
+  3. 
+  4. ... 
+  5. ...
+  6. ...
+  7. ...
+  8. ...
+  9. ...
+  
+- **Primary Postconditions:** <can be a list or short description> 
+- **Alternate Sequence:** <you can have more than one alternate sequence to 
+describe multiple issues that may arise>
+  
+  1. 
+  2. 
+  3. ...
+- **Alternate Sequence <optional>:** <you can have more than one alternate sequence
+to describe multiple issues that may arise>
+  
+4. Use Case Name:  
+- **Pre-condition:** <can be a list or short description> Customer has logged in.
+- **Trigger:** <can be a list or short description> 
+- **Primary Sequence:**
+  1.
+  2.
+  3. 
+  4. ... 
+  5. ...
+  6. ...
+  7. ...
+  8. ...
+  9. ...
+  
+- **Primary Postconditions:** <can be a list or short description> 
+- **Alternate Sequence:** <you can have more than one alternate sequence to 
+describe multiple issues that may arise>
+  
+  1. 
+  2. 
+  3. ...
+- **Alternate Sequence <optional>:** <you can have more than one alternate sequence
+to describe multiple issues that may arise>
+  
+5. Use Case Name:  
+- **Pre-condition:** <can be a list or short description> Customer has logged in.
+- **Trigger:** <can be a list or short description> 
+- **Primary Sequence:**
+  1.
+  2.
+  3. 
+  4. ... 
+  5. ...
+  6. ...
+  7. ...
+  8. ...
+  9. ...
+  
+- **Primary Postconditions:** <can be a list or short description> 
+- **Alternate Sequence:** <you can have more than one alternate sequence to 
+describe multiple issues that may arise>
+  
+  1. 
+  2. 
+  3. ...
+- **Alternate Sequence <optional>:** <you can have more than one alternate sequence
+to describe multiple issues that may arise>
+  
+6. Use Case Name:  
+- **Pre-condition:** <can be a list or short description> Customer has logged in.
+- **Trigger:** <can be a list or short description> 
+- **Primary Sequence:**
+  1.
+  2.
+  3. 
+  4. ... 
+  5. ...
+  6. ...
+  7. ...
+  8. ...
+  9. ...
+  
+- **Primary Postconditions:** <can be a list or short description> 
+- **Alternate Sequence:** <you can have more than one alternate sequence to 
+describe multiple issues that may arise>
+  
+  1. 
+  2. 
+  3. ...
+- **Alternate Sequence <optional>:** <you can have more than one alternate sequence
+to describe multiple issues that may arise>
+  
