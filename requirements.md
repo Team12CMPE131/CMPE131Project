@@ -19,8 +19,8 @@
 4. non-functional
 
 ## Use Cases
-1. Use Case Name: Add to Cart
-- **Pre-condition:** <can be a list or short description> 
+1. Use Case Name:  Add to Cart
+- **Pre-condition:** <can be a list or short description> Customer has logged in 
 - **Trigger:** <can be a list or short description> 
 - **Primary Sequence:**
   1. 
