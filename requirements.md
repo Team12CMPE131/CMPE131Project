@@ -1,19 +1,19 @@
 ## Functional Requirements
 1. Login
 2. Logout
-3. Create a new account 
-4. Delete an account
-5. requirement
-6. requirement
-7. requirement
-8. requirement
-9. requirement
-10. requirement
-11. requirement
-12. requirement
+3. Create new account 
+4. Delete account
+5. Add to cart
+6. View cart
+7. Find item
+8. Bid on item 
+9. Add item to seller store
+10. Sort by options
+11. Rate item
+12. Seller page
 
 ## Non-functional Requirements
-1. non-functional
+1. UI interactive interface
 2. non-functional
 3. non-functional
 4. non-functional
