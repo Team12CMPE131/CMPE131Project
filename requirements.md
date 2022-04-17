@@ -23,8 +23,8 @@
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
 - **Trigger:** <can be a list or short description> Customer sellects "add to card" option
 - **Primary Sequence:**
-  1. System propts user to 
-  
+  1. System propts user to
+  2.
   
 - **Primary Postconditions:** <can be a list or short description> 
   1. Customer adds an item to the cart.
@@ -51,7 +51,7 @@ describe multiple issues that may arise>  Customer
   
   1. 
   2. 
-  3. ...
+  
   
   
 3. Use Case Name:  Bid on item
@@ -61,12 +61,7 @@ describe multiple issues that may arise>  Customer
   1.
   2.
   3. 
-  4. ... 
-  5. ...
-  6. ...
-  7. ...
-  8. ...
-  9. ...
+  
   
 - **Primary Postconditions:** <can be a list or short description> 
 - **Alternate Sequence:** <you can have more than one alternate sequence to 
@@ -74,7 +69,7 @@ describe multiple issues that may arise>
   
   1. 
   2. 
-  3. ...
+  
 - **Alternate Sequence <optional>:** <you can have more than one alternate sequence
 to describe multiple issues that may arise>
   
@@ -85,12 +80,7 @@ to describe multiple issues that may arise>
   1.
   2.
   3. 
-  4. ... 
-  5. ...
-  6. ...
-  7. ...
-  8. ...
-  9. ...
+ 
   
 - **Primary Postconditions:** <can be a list or short description> 
 - **Alternate Sequence:** <you can have more than one alternate sequence to 
@@ -98,7 +88,7 @@ describe multiple issues that may arise>
   
   1. 
   2. 
-  3. ...
+  
 - **Alternate Sequence <optional>:** <you can have more than one alternate sequence
 to describe multiple issues that may arise>
   
@@ -116,7 +106,7 @@ describe multiple issues that may arise>
   
   1. 
   2. 
-  3. ...
+  
 - **Alternate Sequence <optional>:** <you can have more than one alternate sequence
 to describe multiple issues that may arise>
   
@@ -127,7 +117,6 @@ to describe multiple issues that may arise>
   1.
   2.
   3. 
-  
   
 - **Primary Postconditions:** <can be a list or short description> 
 - **Alternate Sequence:** <you can have more than one alternate sequence to 
