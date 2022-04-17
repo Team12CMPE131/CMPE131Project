@@ -19,7 +19,7 @@
 4. non-functional
 
 ## Use Cases
-1. Use Case Name (Should match functional requirement name)
+1. Use Case Name: Add to Cart
 - **Pre-condition:** <can be a list or short description> 
 - **Trigger:** <can be a list or short description> 
 - **Primary Sequence:**
