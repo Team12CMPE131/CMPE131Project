@@ -64,40 +64,34 @@ describe multiple issues that may arise>  Customer selects view the cart option 
   
 3. Use Case Name:  Bid on item
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
-- **Trigger:** <can be a list or short description> Customer selects “Bid on item” option
+
+- **Trigger:** <can be a list or short description> Customer clicks on the bid button under the item.
 - **Primary Sequence:**
-  1.
-  2.
-  3. 
+  1. Customer goes on the item's page.
+  2. Customer clicks the bid textbox and enters the bid.
+  3. Customer clicks enter and bid is added.
   
   
-- **Primary Postconditions:** <can be a list or short description> 
-- **Alternate Sequence:** <you can have more than one alternate sequence to 
-describe multiple issues that may arise>
-  
-  1. 
-  2. 
+- **Primary Postconditions:** <can be a list or short description>
+  1. Bid now appears in the list of bids.
   
   
-4. Use Case Name:  Find item
-- **Pre-condition:** <can be a list or short description>  Customer has logged in and on the main page which has the search bar.
-- **Trigger:** <can be a list or short description> Customer types the name of the item and selects the "search" option.
+
+4. Use Case Name: Rate item
+- **Pre-condition:** <can be a list or short description>  
+  1. Customer has logged in.
+  2. Customer has already bought the product.
+  
+- **Trigger:** <can be a list or short description> Customer clicks on the rate product button.
 - **Primary Sequence:**
-  1.
-  2.
-  3. 
+  1. The rating dropdown appears.
+  2. Customer selects a number from 1 to 5.
+  3. customer clicks post.
  
   
 - **Primary Postconditions:** <can be a list or short description> 
-  1. The system displays the list of results after the customer selects the search option.
-  2. Customer finds the item that is searched for. 
-- **Alternate Sequence:** <you can have more than one alternate sequence to 
-describe multiple issues that may arise>  Customer inputs unacceptable input to search.
-  
-  1. The system displays an error message if the input is not found.
-  2. It tells the user that the input is not available in the system.
-  3. The system prompts the customer to input a valid search item.
-  
+
+  1. The rating is now added and included in the overall rating of the product.
 
   
 5. Use Case Name:  Find item
