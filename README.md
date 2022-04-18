@@ -3,7 +3,7 @@ This project simulates an ecommerce app such as Amazon or Alibaba.
 # Team Members
 - Pranav Pandey(@pranv11)
 - Ece Gulden (@ecegulden)
-- Name (@username)
+- Logan Dang (@Logan-Dang)
 
 ## Table of Contents
 - [Setup/Run](#setup/run)
