@@ -132,7 +132,5 @@ describe multiple issues that may arise>
   
   1. 
   2. 
-  3. ...
-- **Alternate Sequence <optional>:** <you can have more than one alternate sequence
-to describe multiple issues that may arise>
-  
+  3.
+
