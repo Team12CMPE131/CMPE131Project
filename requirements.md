@@ -23,8 +23,9 @@
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
 - **Trigger:** <can be a list or short description> Customer selects "add to cart" option.9om.
 - **Primary Sequence:**
-  1. System propts user to
-  2.
+  1. Customer goes on the main page.
+  2. Customer selects an item from the list.
+  3. Customer gets into the item’s page and clicks on the “add to cart” option to purchase it later on.
   
 - **Primary Postconditions:** <can be a list or short description> 
   1. Customer adds an item to the cart.
@@ -48,9 +49,9 @@ to describe multiple issues that may arise> Customer tries to add an item which 
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
 - **Trigger:** <can be a list or short description> Customer selects "view cart" option.
 - **Primary Sequence:**
-  1.
-  2.
-  3. 
+  1. After adding items to the cart, Customer clicks the “view cart” option.
+  2. The system displays all of the selected/added items in the cart to the customer.
+  3. Customer sees all selected items or an empty space if there is not any added item.
   
 - **Primary Postconditions:** <can be a list or short description> After sellecting view cart option, system displays the list of items that customer added in the cart.
 - **Alternate Sequence:** <you can have more than one alternate sequence to 
