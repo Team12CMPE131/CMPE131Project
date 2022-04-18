@@ -14,9 +14,9 @@
 
 ## Non-functional Requirements
 1. UI interactive interface
-2. non-functional
-3. non-functional
-4. non-functional
+2. scalability
+3. usability
+4. compatibility
 
 ## Use Cases
 1. Use Case Name:  Add to cart
