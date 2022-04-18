@@ -2,6 +2,7 @@
 You will be creating a website where sellers can post items to sell. You will be writing the requirements for your project in this milestone. You will be able to choose the requirements you want to implement. For example, you can decide if you will allow products to be sold for a fixed price or if you want to allow offers/counteroffers and bidding. 
   
 ## Meetings
+Wednesdays @ 8:30 PM
 ### 2022-04-17 at 8:30 PM
 
 - Attendence: 
