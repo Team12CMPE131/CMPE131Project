@@ -100,21 +100,15 @@ describe multiple issues that may arise>
   
 5. Use Case Name:  Find item
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
-- **Trigger:** <can be a list or short description> 
+- **Trigger:** <can be a list or short description> Customer clicks on search icon. 
 - **Primary Sequence:**
-  1.
-  2.
+  1. Customer goes to search page or dropdown search appears.
+  2. Customer enters string
+  3. Customer presses enter or clicks submit
   
   
 - **Primary Postconditions:** <can be a list or short description> 
-- **Alternate Sequence:** <you can have more than one alternate sequence to 
-describe multiple issues that may arise>
-  
-  1. 
-  2. 
-  
-- **Alternate Sequence <optional>:** <you can have more than one alternate sequence
-to describe multiple issues that may arise>
+  1. Results of items display on the page
   
 6. Use Case Name: Add item to seller store 
 - **Pre-condition:** <can be a list or short description> Seller has logged in.
@@ -124,10 +118,7 @@ to describe multiple issues that may arise>
   2. Seller enters item info such as name and price. Uploads a picture of the item.
   3. Click on "Confirm List". 
   
-- **Primary Postconditions:** <can be a list or short description> 
-- **Alternate Sequence:** <you can have more than one alternate sequence to 
-describe multiple issues that may arise>
-  
+- **Primary Postconditions:** <can be a list or short description>  
   1. Item is now displayed on seller page/profile.
   2. Able to find item through search.
 - **Alternate Sequence <optional>:** <you can have more than one alternate sequence
