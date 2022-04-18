@@ -21,7 +21,7 @@
 ## Use Cases
 1. Use Case Name:  Add to cart
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
-- **Trigger:** <can be a list or short description> Customer sellects "add to card" option
+- **Trigger:** <can be a list or short description> Customer selects "add to cart" option.9om.
 - **Primary Sequence:**
   1. System propts user to
   2.
@@ -63,7 +63,7 @@ describe multiple issues that may arise>  Customer selects view the cart option 
   
 3. Use Case Name:  Bid on item
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
-- **Trigger:** <can be a list or short description> 
+- **Trigger:** <can be a list or short description> Customer selects “Bid on item” option
 - **Primary Sequence:**
   1.
   2.
@@ -77,12 +77,10 @@ describe multiple issues that may arise>
   1. 
   2. 
   
-- **Alternate Sequence <optional>:** <you can have more than one alternate sequence
-to describe multiple issues that may arise>
   
 4. Use Case Name:  Find item
-- **Pre-condition:** <can be a list or short description> Customer has logged in.
-- **Trigger:** <can be a list or short description> Customer types the name of the item and selects "search" option.
+- **Pre-condition:** <can be a list or short description>  Customer has logged in and on the main page which has the search bar.
+- **Trigger:** <can be a list or short description> Customer types the name of the item and selects the "search" option.
 - **Primary Sequence:**
   1.
   2.
@@ -90,11 +88,14 @@ to describe multiple issues that may arise>
  
   
 - **Primary Postconditions:** <can be a list or short description> 
+  1. The system displays the list of results after the customer selects the search option.
+  2. Customer finds the item that is searched for. 
 - **Alternate Sequence:** <you can have more than one alternate sequence to 
-describe multiple issues that may arise>
+describe multiple issues that may arise>  Customer inputs unacceptable input to search.
   
-  1. 
-  2. 
+  1. The system displays an error message if the input is not found.
+  2. It tells the user that the input is not available in the system.
+  3. The system prompts the customer to input a valid search item.
   
 
   
