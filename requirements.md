@@ -1,16 +1,16 @@
 ## Functional Requirements
-1. Login
-2. Logout
-3. Create new account 
-4. Delete account
-5. Add to cart
-6. View cart
-7. Find item
-8. Bid on item 
-9. Add item to seller store
-10. Sort by options
-11. Rate item
-12. Seller page
+1. Login - Ece
+2. Logout - Ece
+3. Create new account - Pranav
+4. Delete account - Pranav
+5. Add to cart - Pranav
+6. View cart - Pranav
+7. Find item - Logan
+8. Bid on item - Logan
+9. Add item to seller store - Logan
+10. Sort by options - Logan
+11. Rate item - Ece
+12. Seller page - Ece
 
 ## Non-functional Requirements
 1. UI interactive interface
@@ -100,38 +100,32 @@ describe multiple issues that may arise>  Customer inputs unacceptable input to 
   
 
   
-5. Use Case Name:  Rate item
-- **Pre-condition:** <can be a list or short description> Customer has logged in and selected an item
-- **Trigger:** <can be a list or short description> Customer selects “rate item” option after choosing the rating.
+5. Use Case Name:  Find item
+- **Pre-condition:** <can be a list or short description> Customer has logged in.
+- **Trigger:** <can be a list or short description> Customer clicks on search icon. 
 - **Primary Sequence:**
-  1.
-  2.
+  1. Customer goes to search page or dropdown search appears.
+  2. Customer enters string
+  3. Customer presses enter or clicks submit
   
   
 - **Primary Postconditions:** <can be a list or short description> 
-  1. For the selected item, the system displays the rating of the customer on this page.
-  2. The system saves it for other users to see it.
-- **Alternate Sequence:** <you can have more than one alternate sequence to 
-describe multiple issues that may arise>
-  
-  1. 
-  2. 
-  
-  
+  1. Results of items display on the page
   
 6. Use Case Name: Add item to seller store 
-- **Pre-condition:** <can be a list or short description> Customer has logged in.
-- **Trigger:** <can be a list or short description>  Customer selects “ add item” option
+- **Pre-condition:** <can be a list or short description> Seller has logged in.
+- **Trigger:** <can be a list or short description> On seller page (seller view), seller clicks button "List New Item".
 - **Primary Sequence:**
-  1.
-  2.
-  3. 
+  1. Route to new page or modal view pops up.
+  2. Seller enters item info such as name and price. Uploads a picture of the item.
+  3. Click on "Confirm List". 
   
-- **Primary Postconditions:** <can be a list or short description> 
-- **Alternate Sequence:** <you can have more than one alternate sequence to 
-describe multiple issues that may arise>
+- **Primary Postconditions:** <can be a list or short description>  
+  1. Item is now displayed on seller page/profile.
+  2. Able to find item through search.
+- **Alternate Sequence <optional>:** <you can have more than one alternate sequence
+to describe multiple issues that may arise>
+  1. Route to new page or modal view pops up.
+  2. Seller clicks cancel.
+  3. Route back to seller page or close modal view.
   
-  1. 
-  2. 
-  3.
-
