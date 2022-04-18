@@ -1,16 +1,16 @@
 ## Functional Requirements
-1. Login
-2. Logout
-3. Create new account 
-4. Delete account
-5. Add to cart
-6. View cart
-7. Find item
-8. Bid on item 
-9. Add item to seller store
-10. Sort by options
-11. Rate item
-12. Seller page
+1. Login - Ece
+2. Logout - Ece
+3. Create new account - Pranav
+4. Delete account - Pranav
+5. Add to cart - Pranav
+6. View cart - Pranav
+7. Find item - Logan
+8. Bid on item - Logan
+9. Add item to seller store - Logan
+10. Sort by options - Logan
+11. Rate item - Ece
+12. Seller page - Ece
 
 ## Non-functional Requirements
 1. UI interactive interface
