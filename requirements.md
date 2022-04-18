@@ -117,20 +117,22 @@ describe multiple issues that may arise>
 to describe multiple issues that may arise>
   
 6. Use Case Name: Add item to seller store 
-- **Pre-condition:** <can be a list or short description> Customer has logged in.
-- **Trigger:** <can be a list or short description> 
+- **Pre-condition:** <can be a list or short description> Seller has logged in.
+- **Trigger:** <can be a list or short description> On seller page (seller view), seller clicks button "List New Item".
 - **Primary Sequence:**
-  1.
-  2.
-  3. 
+  1. Route to new page or modal view pops up.
+  2. Seller enters item info such as name and price. Uploads a picture of the item.
+  3. Click on "Confirm List". 
   
 - **Primary Postconditions:** <can be a list or short description> 
 - **Alternate Sequence:** <you can have more than one alternate sequence to 
 describe multiple issues that may arise>
   
-  1. 
-  2. 
-  3. ...
+  1. Item is now displayed on seller page/profile.
+  2. Able to find item through search.
 - **Alternate Sequence <optional>:** <you can have more than one alternate sequence
 to describe multiple issues that may arise>
+  1. Route to new page or modal view pops up.
+  2. Seller clicks cancel.
+  3. Route back to seller page or close modal view.
   
