@@ -34,7 +34,14 @@
 describe multiple issues that may arise>  Customer adds more items to the cart and reaches the limit of the cart.
   
   1. The system displays an error message to customer
-  2. The sysyem prompts the user that it reached the limit and it cannot add more items to the cart.
+  2. The sysyem tells the user that it reached the limit and it cannot add more items to the cart.
+
+  - **Alternate Sequence <optional>:** <you can have more than one alternate sequence
+to describe multiple issues that may arise> Customer tries to add an item which is not avalible to the cart
+  
+  1. The system displays an error message to the customer.
+  2. It tells the user that the item is not in stock to add it to the list.
+  3. The system prompts user to select an avalible item to add the cart.
 
   
 2. Use Case Name:  View the cart
@@ -47,10 +54,10 @@ describe multiple issues that may arise>  Customer adds more items to the cart a
   
 - **Primary Postconditions:** <can be a list or short description> After sellecting view cart option, system displays the list of items that customer added in the cart.
 - **Alternate Sequence:** <you can have more than one alternate sequence to 
-describe multiple issues that may arise>  Customer 
+describe multiple issues that may arise>  Customer selects view the cart option before adding any items in the cart.
   
-  1. 
-  2. 
+  1. The system displays an empty cart list since no item is added.
+  2. The system prompts the customer to select an item to the cart.
   
   
   
@@ -75,7 +82,7 @@ to describe multiple issues that may arise>
   
 4. Use Case Name:  Find item
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
-- **Trigger:** <can be a list or short description> 
+- **Trigger:** <can be a list or short description> Customer types the name of the item and selects "search" option.
 - **Primary Sequence:**
   1.
   2.
@@ -89,8 +96,7 @@ describe multiple issues that may arise>
   1. 
   2. 
   
-- **Alternate Sequence <optional>:** <you can have more than one alternate sequence
-to describe multiple issues that may arise>
+
   
 5. Use Case Name:  Find item
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
