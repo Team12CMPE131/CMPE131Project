@@ -4,18 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>List Item Page</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static',filename='styles/list.css') }}"
+    />
   </head>
   <body>
     <div>
-      <form action="">
-        <label for="item">Enter a name:</label>
-        <input type="text" name="item" required />
-        <label for="price">Enter an amount:</label>
-        <input type="text" name="price" required />
+      <form action="/link" method="post">
+        <div class="inputGroup">
+          <label for="item">Enter a name:</label>
+          <input type="text" name="item" required />
+        </div>
+        <div class="inputGroup">
+          <label for="price">Enter an amount:</label>
+          <input type="text" name="price" required />
+        </div>
         <label for="bid">Set auction preference:</label>
-        <input type="radio" name="bid" value="List for action"/>
-        <input type="radio" name="bid" value="List for sale"/>
+        <fieldset class="inputGroup">
+          <label for="sale">List for action</label>
+          <input type="radio" name="sale" />
+          <label for="sale">List for sale</label>
+          <input type="radio" name="sale" />
+        </fieldset>
+        <div class="inputGroup">
+          <input type="submit" />
+        </div>
       </form>
     </div>
   </body>
