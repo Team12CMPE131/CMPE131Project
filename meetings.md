@@ -3,7 +3,6 @@ You will be creating a website where sellers can post items to sell. You will be
   
 ## Meetings
 
-=======
 Wednesdays @ 8:30 PM
 ### 2022-04-17 at 8:30 PM
 
