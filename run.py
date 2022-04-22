@@ -1,3 +1,3 @@
 from app import myapp
 
-myapp.run()
+myapp.run(debug=True)
