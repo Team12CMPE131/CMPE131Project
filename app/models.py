@@ -14,6 +14,5 @@ class Item(db.Model):
     barcode = db.Column(db.String(length = 16), nullable = False, unique = True)
     description = db.Column(db.String(length = 1024), nullable =False)
 
-    
-
-
+def __repr__(self):
+    return '<User {}>'.format(self.username)
