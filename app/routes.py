@@ -1,12 +1,12 @@
-from flask import render_template, redirect, flash
+from flask import render_template, session, redirect, request, flash, url_for
 from app import myapp
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 
 @myapp.route('/')
 @myapp.route('/home')
 def home():
     return render_template('home.html')
-
+# @login_required
 # @app.route('/sellerspage')
 # def seller_page():
 # items= Item.query.filter_by( username= form.username.data).first()
@@ -26,7 +26,7 @@ def login():
             flash('Incorrect username or password! Please try again.', category='fail')
     return render_template("login.html", form=form)         
              
-   
+@login_required   
 @myapp.route('/logout')
 def logout():
     logout_user()
