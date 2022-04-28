@@ -1,5 +1,6 @@
 from flask import render_template, session, redirect, request, flash, url_for
 from app import myapp
+from app.forms import ListItemForm
 from flask_login import login_user, logout_user, login_required
 
 @myapp.route('/')
@@ -35,6 +36,9 @@ def logout():
          
                           
 
-@myapp.route('/list')
+@myapp.route('/list', methods=['GET', 'POST'])
 def list():
-    return render_template('list.html')
+    form = ListItemForm(request.form)
+    if form.validate():
+        return redirect('/')
+    return render_template('list.html', form=form)

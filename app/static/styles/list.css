@@ -3,6 +3,28 @@
   margin-left: 0;
 }
 
+ul {
+  list-style: none;
+  display: table;
+  border-collapse: separate;
+  border-spacing: 1em
+}
+
+li {
+  display: table-row;
+}
+
+label {
+  display: table-cell;
+  padding: 1
+}
+
+input {
+  display: table-cell;
+}
+
 form {
   margin: 1em;
+  border-style: solid;
+  border-color: black;
 }

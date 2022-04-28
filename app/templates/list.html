@@ -12,26 +12,35 @@
   </head>
   <body>
     <div>
-      <form action="/link" method="post">
-        <div class="inputGroup">
-          <label for="item">Enter a name:</label>
-          <input type="text" name="item" required />
-        </div>
-        <div class="inputGroup">
-          <label for="price">Enter an amount:</label>
-          <input type="text" name="price" required />
-        </div>
-        <label for="bid">Set auction preference:</label>
-        <div class="inputGroup">
-          <label for="sale">List for action</label>
-          <input type="radio" name="sale" />
-          <label for="sale">List for sale</label>
-          <input type="radio" name="sale" />
-        </div>
-        <div class="inputGroup">
-          <input type="submit" />
-        </div>
+      <form action="/list" method="post">
+        {{ form.csrf_token }}
+        <ul>
+          <li>
+            {{ form.item_name.label }} 
+            {{ form.item_name }}
+          </li>
+          <li>
+            {{ form.item_price.label }}
+            {{ form.item_price }}
+          </li>
+          <li>
+            {{ form.item_description.label }}
+            {{ form.item_description }}
+          </li>
+          <li>
+            {{ form.item_picture.label }}
+            {{ form.item_picture }}
+          </li>
+          <li>
+            {{ form.auction_choice.label }}
+            {{ form.auction_choice }}
+          </li>
+          <li>
+            <input type="submit" value="List!">
+          </li>
+        </ul>
       </form>
+      <a href="/">Home</a>
     </div>
   </body>
 </html>
