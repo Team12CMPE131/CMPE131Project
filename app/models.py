@@ -21,12 +21,11 @@ def load_user(id):
     return User.query.get(int(id))
 
 class Item(db.Model):
-    id = db.Column(db.Integer(), primary_key =True)
-    name = db.Column(db.String(length = 32), nullable = False, unique = True)
+    id = db.Column(db.Integer, primary_key =True)
+    name = db.Column(db.String(length = 32), nullable = False)
     price = db.Column(db.Integer, nullable = False)
-    barcode = db.Column(db.String(length = 16), nullable = False, unique = True)
-    description = db.Column(db.String(length = 1024), nullable =False)
-
+    picture = db.Column(db.String)
+    description = db.Column(db.String(length = 1024), nullable = False)
     
-
-
+    def __repr__(self) -> str:
+        return self.name + ': $' + str(self.price)
