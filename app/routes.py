@@ -1,7 +1,10 @@
+from atexit import register
 from flask import render_template, session, redirect, request, flash, url_for
-from app import myapp
-from app.models import Item
+from app import myapp, db
+from app.models import Item,User 
 from flask_login import login_user, logout_user, login_required
+from app.forms import register
+
 
 @myapp.route('/')
 @myapp.route('/home')
@@ -33,14 +36,28 @@ def logout():
     logout_user()
     flash("You have been logged out.", category= 'info')
     return redirect('/login')                       
-         
-                          
-
+    
 @myapp.route('/list')
-def list():
+def list(): 
     return render_template('list.html')
 
 @myapp.route('/market')
 def market():
     items = Item.query.all()
     return render_template('market.html', items = items)
+
+@myapp.route('/registration', methods=['GET', 'POST'])
+def registration():
+    form = register()
+    if form.validate_on_submit():
+        user_to_create = User(username= form.username.data, 
+                            email_address = form.email_address.data, 
+                            password_hash = form.password1.data)
+        db.session.add(user_to_create)
+        db.session.commit()
+        return redirect(url_for('market'))
+    if form.errors !={}:
+        for err_msg in form.errors.values():
+            print(f'There was an error while registering:{err_msg}')
+
+    return render_template('register.html', form=form)
