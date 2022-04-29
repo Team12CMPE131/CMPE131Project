@@ -1,1 +1,2 @@
 Flask==2.0.3
+email_validator==1.2.0
