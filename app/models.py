@@ -1,3 +1,4 @@
+import bcrypt
 from app import db
 from app import login
 from flask_login import UserMixin
@@ -10,6 +11,15 @@ class User(UserMixin, db.Model):
     email_address = db.Column(db.String(length = 1024), unique = True)
     budget = db.Column(db.Integer(), default = 1000)
     items = db.relationship('Item', backref = 'owned_user', lazy = True)
+
+    @property
+    def password(self):
+        return self.password
+
+
+    @password.setter
+    def password(self, plain_text_password):
+        self.password_hash = bcrypt.generate_password_hash(plain_text_password).decode('utf-8')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
