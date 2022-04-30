@@ -1,38 +1,38 @@
 {%extends 'base.html'%}
+{%block stylesheets%}
+  <link rel="stylesheet" href=" {{ url_for('static', filename='styles/list.css' ) }}"
+{%endblock%}
 {%block title%}
-  List Item
+List Item
 {%endblock%}
 
 {%block content%}
-    <div>
-      <form action="/list" method="post" class="form-register">
-        {{ form.csrf_token }}
-        <ul>
-          <li>
-            {{ form.item_name.label }} 
-            {{ form.item_name }}
-          </li>
-          <li>
-            {{ form.item_price.label }}
-            {{ form.item_price }}
-          </li>
-          <li>
-            {{ form.item_description.label }}
-            {{ form.item_description }}
-          </li>
-          <li>
-            {{ form.item_picture.label }}
-            {{ form.item_picture }}
-          </li>
-          <li>
-            {{ form.auction_choice.label }}
-            {{ form.auction_choice }}
-          </li>
-          <li>
-            <input type="submit" value="List!">
-          </li>
-        </ul>
-      </form>
-      <a href="/">Home</a>
-    </div>
+  <div class="text-center container">
+    <form action="/list" method="POST">
+      {{ form.csrf_token }}
+      <h1 class="h3 mb-3 font-weight-normal">List Item</h1>
+      {{ form.item_name.label }} 
+      {{ form.item_name(class = "form-control", placeholder="Item Name")}}
+
+      {{ form.item_price.label }}
+      {{ form.item_price(class = "form-control", placeholder="Item Price")}}
+
+      {{ form.item_description.label }}
+      {{ form.item_description(class = "form-control", placeholder="Item Description")}}
+
+      {{ form.item_picture.label }}
+      {{ form.item_picture(class= "form-control file-input", value="Upload")}}
+
+      {{ form.auction_choice.label }}
+      <div class="auction">
+        {%for choice in form.auction_choice%}
+        <div class="choice">
+          {{choice.label}}
+          {{choice}}
+        </div>
+        {%endfor%}
+      </div>
+      {{ form.submit(class = "btn btn-lg btn-block btn-primary") }}
+    </form>
+  </div>
 {%endblock%}

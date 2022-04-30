@@ -3,11 +3,12 @@ from flask_wtf import FlaskForm
 from wtforms.validators import Length, Email, EqualTo, DataRequired
 
 class ListItemForm(Form):
-    item_name = StringField('Item Name', [validators.DataRequired(), validators.Length(max = 20)])
-    item_price = DecimalField('Item Price', [validators.DataRequired()])
-    item_description = StringField('Item Description', [validators.DataRequired(), validators.Length(max = 280)])
-    item_picture = FileField('Item Picture', [validators.DataRequired()])
-    auction_choice = RadioField('Auction?', [validators.DataRequired()], choices=['Auction', 'List'])
+    item_name = StringField('Enter Item Name', [validators.DataRequired(), validators.Length(max = 20)])
+    item_price = DecimalField('Enter Item Price', [validators.DataRequired()])
+    item_description = StringField('Enter Item Description', [validators.DataRequired(), validators.Length(max = 280)])
+    item_picture = FileField('Upload Item Picture', [validators.DataRequired()])
+    auction_choice = RadioField('Auction?', [validators.DataRequired()], choices=['Auction', 'Sale'])
+    submit = SubmitField('List Item on Market!')
 
 class register(FlaskForm):
     username = StringField(label='Username: ', validators=[Length(min=2, max =32), DataRequired()])
