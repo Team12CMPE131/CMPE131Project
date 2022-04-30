@@ -30,6 +30,22 @@ Wednesdays @ 8:30 PM
   - We made some connections between the features and decided the order of some of them.
   - We made a sketch plan for sellers page and adding item.
   - Everyone talked about what they will work on later on and scheduled dates to work on our parts. 
+
+### 2022-04-27 at 8:30 PM 
+- Attendence: 
+  - Pranav
+  - Ece
+  - Logan
+  
+- Team updates
+  - We talked about the progress of each of the functional requirements.
+ 
+- Summary: 
+  - We discussed about the UI of the website.
+  - We planned what we are going to do going forward with the project and what problems we are facing.
+  - We discussed on the seller page functional requirement and figured what we wanted in the seller page.
+  - The login page, registration page is almost complete and new html file have been created.
+
 <!---
 ### 2022-04-27 at 10:30
 
