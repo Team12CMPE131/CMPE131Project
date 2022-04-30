@@ -1,24 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Team 12</title>
-  <link
-      rel="stylesheet"
-      href="{{ url_for('static',filename='styles/home.css') }}"
-    />
-</head>
-<body>
-  <div>
-    <div class="header">
-      <h1 class="titleWrapper">Welcome to Team 12!</h1>
-      <div class="navbar">
-        <a href="/login">Login</a>
-        <a href="/list">List Item</a>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
+{%extends 'base.html'%}
+{%block title%}
+    MarketPage
+{%endblock%}
+
+
+
+  <body>
+    <h1>It's Team 12</h1>
+    <h2>Best Team Represent</h2>
+    <p>Ece, Logan, Pranav</p>
+    <p></p>
+  </body>
+
+  <a href="/list">Go to /list</a>
+

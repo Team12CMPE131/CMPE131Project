@@ -5,9 +5,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key = True, unique = True)
-    username = db.Column(db.String(length = 64), primary_key = True, unique =True)
-    password_hash = db.Column(db.String(128))
-    email = db.Column(db.Integer, primary_key = True, unique = True)
+    username = db.Column(db.String(length = 64), unique =True)
+    password_hash = db.Column(db.String(length = 128))
+    email_address = db.Column(db.String(length = 1024), unique = True)
+    budget = db.Column(db.Integer(), default = 1000)
+    items = db.relationship('Item', backref = 'owned_user', lazy = True)
+
+    def __repr__(self):
+        return '<User {}>'.format(self.username)
     
 
 def set_password(self, password):
@@ -25,7 +30,8 @@ class Item(db.Model):
     name = db.Column(db.String(length = 32), nullable = False)
     price = db.Column(db.Integer, nullable = False)
     picture = db.Column(db.String)
-    description = db.Column(db.String(length = 1024), nullable = False)
-    
-    def __repr__(self) -> str:
-        return self.name + ': $' + str(self.price)
+    description = db.Column(db.String(length = 1024))
+    Owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return '<Item {}>'.format(self.name)
