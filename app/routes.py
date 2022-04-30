@@ -42,9 +42,12 @@ def logout():
 
 @myapp.route('/list', methods=['GET', 'POST'])
 def list():
-    form = ListItemForm(request.form)
-    if form.validate():
-        return redirect('/')
+    form = ListItemForm()
+    if form.validate_on_submit():
+        new_item = Item(name = form.item_name.data, price = form.item_price.data, 
+                        picture = '', description = form.item_description.data, Owner = 0)
+        db.session.add(new_item)
+        db.session.commit()
     return render_template('list.html', form=form)
 
 @myapp.route('/market')

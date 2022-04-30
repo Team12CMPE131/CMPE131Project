@@ -2,11 +2,11 @@ from wtforms import validators, Form, StringField, DecimalField, FileField, Radi
 from flask_wtf import FlaskForm
 from wtforms.validators import Length, Email, EqualTo, DataRequired
 
-class ListItemForm(Form):
+class ListItemForm(FlaskForm):
     item_name = StringField('Enter Item Name', [validators.DataRequired(), validators.Length(max = 20)])
     item_price = DecimalField('Enter Item Price', [validators.DataRequired()])
     item_description = StringField('Enter Item Description', [validators.DataRequired(), validators.Length(max = 280)])
-    item_picture = FileField('Upload Item Picture', [validators.DataRequired()])
+    item_picture = FileField('Upload Item Picture')
     auction_choice = RadioField('Auction?', [validators.DataRequired()], choices=['Auction', 'Sale'])
     submit = SubmitField('List Item on Market!')
 
