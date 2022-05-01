@@ -1,37 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>List Item Page</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static',filename='styles/list.css') }}"
-    />
-  </head>
-  <body>
-    <div>
-      <form action="/link" method="post">
-        <div class="inputGroup">
-          <label for="item">Enter a name:</label>
-          <input type="text" name="item" required />
+{%extends 'base.html'%}
+{%block stylesheets%}
+  <link rel="stylesheet" href=" {{ url_for('static', filename='styles/list.css' ) }}">
+{%endblock%}
+{%block title%}
+  List Item
+{%endblock%}
+
+{%block content%}
+  <div class="text-center container">
+    <form action="/list" method="POST">
+      {{ form.csrf_token }}
+      <h1 class="h3 mb-3 font-weight-normal">List Item</h1>
+      {{ form.item_name.label }} 
+      {{ form.item_name(class = "form-control", placeholder="Item Name")}}
+
+      {{ form.item_price.label }}
+      {{ form.item_price(class = "form-control", placeholder="Item Price")}}
+
+      {{ form.item_description.label }}
+      {{ form.item_description(class = "form-control", placeholder="Item Description")}}
+
+      {{ form.item_picture.label }}
+      {{ form.item_picture(class= "form-control file-input", value="Upload")}}
+
+      {{ form.auction_choice.label }}
+      <div class="auction">
+        {%for choice in form.auction_choice%}
+        <div class="choice">
+          {{choice.label}}
+          {{choice}}
         </div>
-        <div class="inputGroup">
-          <label for="price">Enter an amount:</label>
-          <input type="text" name="price" required />
-        </div>
-        <label for="bid">Set auction preference:</label>
-        <div class="inputGroup">
-          <label for="sale">List for action</label>
-          <input type="radio" name="sale" />
-          <label for="sale">List for sale</label>
-          <input type="radio" name="sale" />
-        </div>
-        <div class="inputGroup">
-          <input type="submit" />
-        </div>
-      </form>
-    </div>
-  </body>
-</html>
+        {%endfor%}
+      </div>
+      {{ form.submit(class = "btn btn-lg btn-block btn-primary") }}
+    </form>
+  </div>
+{%endblock%}

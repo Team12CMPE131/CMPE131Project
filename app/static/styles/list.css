@@ -1,8 +1,15 @@
-.inputGroup {
-  margin: 1em;
-  margin-left: 0;
+.auction {
+  display: flex !important;
+  justify-content: center;
 }
 
-form {
-  margin: 1em;
+.choice {
+  flex: 1;
+  text-align: center;
+}
+
+.file-input {
+  background-color: #a0895d;
+  border: none;
+  color: white;
 }
