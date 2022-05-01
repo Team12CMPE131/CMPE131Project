@@ -1,4 +1,9 @@
 {%extends 'base.html'%}
+
+{%block stylesheets%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/results.css')}}">
+{%endblock%}
+
 {%block title%}
     Results
 {%endblock%}
@@ -6,15 +11,18 @@
 {%block content%}
     <div class="text-center container">
         {%if items|length > 0%}
+            <ul class="list-group">
             {%for item in items%}
-                <div>
+                <li class="list-group-item">
                     {{item.name}}
                     {{item.description}}
                     {{item.price}}
-                </div>
+                </li>
             {%endfor%}
+            </ul>
         {%else%}
             <h1>No Results Found :(</h1>
         {%endif%}
     </div>
+
 {%endblock%}

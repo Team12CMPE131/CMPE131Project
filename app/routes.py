@@ -78,5 +78,6 @@ def registration():
 def results():
     form = SearchForm()
     if form.validate_on_submit():
-        items = Item.query.filter(str(form.name.data).strip() == Item.name)
+        search_name = str(form.name.data).strip()
+        items = Item.query.filter(Item.name.contains(search_name))
         return render_template('results.html', items=list(items))
