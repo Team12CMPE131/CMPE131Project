@@ -4,13 +4,13 @@
 {%endblock%}
 
 
-
-  <body>
-    <h1>It's Team 12</h1>
-    <h2>Best Team Represent</h2>
-    <p>Ece, Logan, Pranav</p>
-    <p></p>
-  </body>
-
-  <a href="/list">Go to /list</a>
-
+{%block content%}
+  <div class="container">
+    <h1>Market.</h1>
+    <form action="/results", method="post">
+      {{form.csrf_token}}
+      {{form.name.label}}
+      {{form.name(class='form-control', placeholder=suggestion )}}
+    </form>
+  </div>
+{%endblock%}
