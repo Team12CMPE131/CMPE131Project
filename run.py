@@ -1,3 +1,10 @@
 from app import myapp
+import sys
 
-myapp.run(debug=True)
+debug_mode = False
+
+if '-d' in sys.argv:
+    print('debug on')
+    debug_mode = True
+    
+myapp.run(debug=debug_mode)
