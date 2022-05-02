@@ -6,6 +6,7 @@ from flask_login import login_user, logout_user, login_required
 from app.forms import register, LoginForm
 
 
+
 @myapp.route('/')
 @myapp.route('/home')
 def home():
@@ -21,14 +22,17 @@ def home():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
-        if user and user.check_password_correction( password= form.password.data):
-            login_user(user)
-            flash(f'Successful Login!', category= 'success')
-            return redirect('/') #fill this out later
+        attempted_user = User.query.filter_by(username=form.username.data).first()
+        if attempted_user and attempted_user.check_password_correction(
+                attempted_password=form.password.data
+        ):
+            login_user(attempted_user)
+            flash(f'Success! You are logged in as: {attempted_user.username}', category='success')
+            return redirect(url_for('market'))
         else:
-            flash('Incorrect username or password! Please try again.', category='fail')
-    return render_template("login.html", form=form)         
+            flash('Username and password are not match! Please try again', category='danger')
+
+    return render_template('login.html', form=form)         
              
 @login_required   
 @myapp.route('/logout')
@@ -42,6 +46,7 @@ def list():
     return render_template('list.html')
 
 @myapp.route('/market')
+@login_required 
 def market():
     items = Item.query.all()
     return render_template('market.html', items = items)
@@ -55,6 +60,8 @@ def registration():
                             password = form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
+        login_user(user_to_create)
+        flash(f'Account created successfully! Logged in as {user_to_create.username}', category='success')
         return redirect(url_for('market'))
     if form.errors !={}:
         for err_msg in form.errors.values():
