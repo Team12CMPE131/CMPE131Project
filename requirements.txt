@@ -1,2 +1,8 @@
 Flask==2.0.3
+Flask_Login==0.6.0
+Flask_SQLAlchemy==2.5.1
+Werkzeug==2.0.3
+Flask-WTF==1.0.1 
+WTForms==3.0.1
 email_validator==1.2.0
+Flask-Testing==0.8.1

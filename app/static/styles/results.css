@@ -1,0 +1,13 @@
+li {
+    color: black !important
+}
+
+.buttons {
+    display: flex;
+}
+
+.buttons * {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}

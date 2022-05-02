@@ -1,16 +1,20 @@
 from atexit import register
 from flask import render_template, session, redirect, request, flash, url_for, get_flashed_messages
 from app import myapp, db
+from app.forms import ListItemForm
 from app.models import Item,User 
 from flask_login import login_user, logout_user, login_required
-from app.forms import register, LoginForm
+from app.forms import register, LoginForm, SearchForm
+from random import choice
 
 
 
 @myapp.route('/')
-@myapp.route('/home')
+@myapp.route('/home', methods=['GET'])
 def home():
-    return render_template('home.html')
+    form = SearchForm()
+    suggestions = ['Bananas', 'iPad', 'Gaming Laptop']
+    return render_template('home.html', form=form, suggestion=str(choice(suggestions)) + '...')
 # @login_required
 # @app.route('/sellerspage')
 # def seller_page():
@@ -40,10 +44,18 @@ def logout():
     logout_user()
     flash("You have been logged out.", category= 'info')
     return redirect('/login')                       
-    
-@myapp.route('/list')
-def list(): 
-    return render_template('list.html')
+         
+                          
+
+@myapp.route('/list', methods=['GET', 'POST'])
+def list_item():
+    form = ListItemForm()
+    if form.validate_on_submit():
+        new_item = Item(name = form.item_name.data, price = form.item_price.data, 
+                        picture = '', description = form.item_description.data, Owner = 0)
+        db.session.add(new_item)
+        db.session.commit()
+    return render_template('list.html', form=form)
 
 @myapp.route('/market')
 @login_required 
@@ -68,3 +80,11 @@ def registration():
             flash(f'There was an error while registering:{err_msg}', category='danger')
 
     return render_template('register.html', form=form)
+
+@myapp.route('/results', methods=['POST'])
+def results():
+    form = SearchForm()
+    if form.validate_on_submit():
+        search_name = str(form.name.data).strip()
+        items = Item.query.filter(Item.name.contains(search_name))
+        return render_template('results.html', items=list(items))

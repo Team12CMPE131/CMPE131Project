@@ -39,9 +39,10 @@ def load_user(id):
     return User.query.get(int(id))
 
 class Item(db.Model):
-    id = db.Column(db.Integer(), primary_key =True)
-    name = db.Column(db.String(length = 32), nullable = False, unique = True)
-    price = db.Column(db.Integer, nullable = False)
+    id = db.Column(db.Integer, primary_key =True)
+    name = db.Column(db.String(length = 32), nullable = False)
+    price = db.Column(db.Float, nullable = False)
+    picture = db.Column(db.String, nullable = True)
     description = db.Column(db.String(length = 1024))
     Owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
