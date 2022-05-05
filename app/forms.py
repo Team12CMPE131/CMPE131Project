@@ -1,7 +1,7 @@
 from sre_constants import RANGE_UNI_IGNORE
 from xml.dom import ValidationErr
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+
 from wtforms.validators import Length, Email, EqualTo, DataRequired, ValidationError
 from app.models import User
 
