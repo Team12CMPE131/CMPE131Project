@@ -46,6 +46,14 @@ Wednesdays @ 8:30 PM
   - We discussed on the seller page functional requirement and figured what we wanted in the seller page.
   - The login page, registration page is almost complete and new html file have been created.
 
+### 2022-05-05 at 9:30 PM
+- Attendence:
+  - Pranav
+  - Ece
+  - Logan
+
+- Team updates
+
 <!---
 ### 2022-04-27 at 10:30
 
