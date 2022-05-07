@@ -24,6 +24,7 @@ class Item(db.Model):
 
     def buy(self, user):
         self.Owner = user.id
+        self.cart = None
         user.budget -= self.price
         db.session.commit()
 
@@ -61,6 +62,10 @@ class AuctionItem(Item):
     def handle_end(self):
         super().set_owner(self.bid_owner)
         
+
+    def remove_from_cart(self):
+        self.cart = None
+        db.session.commit()
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key = True, unique = True)

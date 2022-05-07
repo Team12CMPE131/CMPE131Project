@@ -30,7 +30,16 @@
 						<td>{{item.name}}</td>
 						<td>${{item.price}}</td>
 						<td>
-							<button type="button" class="btn btn-outline btn-success" >checkout</button>
+                            <form method="POST">
+                                {{ checkout_form.hidden_tag() }}
+                                <input id="checkout_item" name="checkout_item" type="hidden" value="{{item.id}}">
+                                {{ checkout_form.submit(class="btn btn-outline-success btn-block") }}
+                            </form>
+                            <form method="POST">
+                                {{ delete_from_cart.hidden_tag() }}
+                                <input id="delete_item" name="delete_item" type="hidden" value="{{item.id}}">
+                                {{ delete_from_cart.submit(class="btn btn-outline-success btn-block") }}
+                            </form>
 			
 
 						</td>
