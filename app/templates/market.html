@@ -7,7 +7,7 @@
 
 
 <div class="row" style="margin-top:20px; margin-left:20px">
-	<div class="col-8">
+	<div class="col-11">
 		<h2>Available items on the Market</h2>
 		<p>Click on one of the items to start buying</p>
 		<br>
@@ -32,10 +32,10 @@
 						<td>
 							<button type="button" class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">Description</button>
 							<button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Buy</button>
-							<form method="POST" class="form-delete" style="color: white;">
+							<form method="POST" class="form" style="color: white;">
 								{{ add_to_cart.hidden_tag() }}
-								<input id="cart_item" name="cart_item" type="hidden" value="{{item.name}}">
-								{{ add_to_cart.submit(class="btn btn-outline-secondary btn-secondary") }}
+								<input id="cart_item" name="cart_item" type="hidden" value="{{item.id}}">
+								{{ add_to_cart.submit(class="btn btn-secondary") }}
 							</form>
 
 						</td>
@@ -45,13 +45,7 @@
             
 				</tbody>
 			</table>
-		</div>
-		<div class="col-4">
-			<h2>Owned Items</h2>
-			<p>Click on sell item to put an item back on the Market</p>
-			<br>
-			</div>
-		</div>
+
 
 {%endblock%}
 

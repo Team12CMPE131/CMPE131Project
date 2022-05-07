@@ -23,14 +23,14 @@
 				<tbody>
 
         {%for item in items%}
-        {% include 'includes/items_modals.html' %}
+
             
 					<tr>
 						<td>{{item.id}}</td>
 						<td>{{item.name}}</td>
 						<td>${{item.price}}</td>
 						<td>
-							<button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">checkout</button>
+							<button type="button" class="btn btn-outline btn-success" >checkout</button>
 			
 
 						</td>

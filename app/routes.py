@@ -75,6 +75,7 @@ def market():
     purchase_form = purchaseItemForm()
     compare_button = CompareItemButton()
 
+    add_to_cart = addToCart()
     if request.method == "POST":
         purchased_item = request.form.get('purchased_item')
         p_item_object = Item.query.filter_by(id=purchased_item).first()
@@ -84,17 +85,14 @@ def market():
                 flash(f"Congratulations! You purchased {p_item_object.name} for {p_item_object.price}$", category='success')
             else:
                 flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}!", category='danger')
-        return redirect(url_for('market'))
-
-    add_to_cart = addToCart()
-    if request.method == "POST":
         cart_item = request.form.get('cart_item')
-        cart_object = Item.query.filter_by(name = cart_item).first()
+        cart_object = Item.query.filter_by(id = cart_item).first()
         if cart_object:
             cart_object.add_to_cart(current_user)
             flash(f"{cart_object.name} has been added to your cart!")
+        else:
+            flash("no cart")
         return redirect(url_for('market'))
-
     if request.method == "GET":
         items = Item.query.filter_by(Owner=None)
         return render_template('market.html', items=items, purchase_form=purchase_form, add_to_cart = add_to_cart, compare=compare_button)
@@ -148,16 +146,8 @@ def results():
 @myapp.route('/mycart', methods = ['POST', 'GET'])
 def cart():
     if request.method == "GET":
-        items = Item.query.filter_by(in_cart= current_user.id)
+        items = Item.query.filter_by(cart= current_user.id)
         return render_template('cart.html', items=items)
-    
- 
-
-
-
-
-
-
 
 @myapp.route('/profile', methods = ['POST', 'GET'])
 def profile():
