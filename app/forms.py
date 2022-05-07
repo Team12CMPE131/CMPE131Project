@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 from flask import Flask
+=======
+from sre_constants import RANGE_UNI_IGNORE
+
+
+>>>>>>> 46d057617736905ec4c27ee5b0fe52ffbd3b102a
 from wtforms.validators import Length, Email, EqualTo, DataRequired, ValidationError
 from app.models import User
 from wtforms import validators, StringField, DecimalField, FileField, RadioField, PasswordField, SubmitField
