@@ -1,0 +1,55 @@
+{%extends 'base.html'%}
+{%block title%}
+    MarketPage
+{%endblock%}
+{%block content%}
+
+
+
+<div class="row" style="margin-top:20px; margin-left:20px">
+	<div class="col-8">
+		<h2>Available items on the Market</h2>
+		<p>Click on one of the items to start buying</p>
+		<br>
+			<table class="table table-striped table-hover table-borderless table-dark">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Name</th>
+						<th scope="col">Price</th>
+						<th scope="col">Options</th>
+					</tr>
+				</thead>
+				<tbody>
+
+        {%for item in items%}
+            
+					<tr>
+						<td>{{item.id}}</td>
+						<td>{{item.name}}</td>
+						<td>${{item.price}}</td>
+						<td>
+							<form action="{{ url_for('comparing', item1_id=item_id, item2_id=item.id) }}" method="POST">
+								{{ form.csrf_token }}
+								{{ form.item_id(value=item_id) }}
+								{{ form.second_id(value=item.id) }}
+								{{ form.submit(class="btn btn-outline btn-info") }}
+							</form>
+						</td>
+					</tr>
+        {%endfor%}
+
+            
+				</tbody>
+			</table>
+		</div>
+		<div class="col-4">
+			<h2>Owned Items</h2>
+			<p>Click on sell item to put an item back on the Market</p>
+			<br>
+			</div>
+		</div>
+
+{%endblock%}
+
+

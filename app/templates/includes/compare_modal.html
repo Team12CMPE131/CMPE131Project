@@ -4,16 +4,14 @@
   }
 </style>
 
-<!-- More Info -->
-<div class="modal fade" id="Modal-MoreInfo-{{ item.id }}"
+<div class="modal fade" id="Modal-PurchaseConfirm-{{ item1.id }}"
      tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="ModalLabel">
-          <!-- -->
-          {{ item.name }}
+          {{ item1.name }}
         </h5>
         <button type="button" class="close"
                 data-dismiss="modal" aria-label="Close">
@@ -21,14 +19,21 @@
         </button>
       </div>
       <div class="modal-body">
-        {{ item.description }}
+        <form method="POST" action="/market">
+          {{ purchase_form.hidden_tag() }}
+          <h4 class="text-center">
+            Are you sure you want to buy {{ item1.name }} for {{ item1.price }}$ ?
+          </h4>
+          <br>
+          <h6 class="text-center">
+            Confrim purchase by clicking Buy item button.
+          </h6>
+          <br>
+          <input id="purchased_item" name="purchased_item" type="hidden" value="{{item1.id}}">
+          {{ purchase_form.submit(class="btn btn-outline-success btn-block") }}
+        </form>
       </div>
       <div class="modal-footer">
-        <form action="{{ url_for('compare') }}" method="POST">
-          {{ compare.csrf_token }}
-          {{ compare.item_id(value=item.id) }}
-          {{ compare.submit(class='btn btn-outline btn-info') }}
-        </form>
         <button type="button" class="btn btn-secondary"
                 data-dismiss="modal">Close
         </button>
@@ -37,8 +42,7 @@
   </div>
 </div>
 
-<!-- Purchase Confirm -->
-<div class="modal fade" id="Modal-PurchaseConfirm-{{ item.id }}"
+<div class="modal fade" id="Modal-PurchaseConfirm-{{ item2.id }}"
      tabindex="-1"
      aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -46,7 +50,7 @@
       <div class="modal-header">
         <h5 class="modal-title" id="ModalLabel">
           <!-- -->
-          {{ item.name }}
+          {{ item2.name }}
         </h5>
         <button type="button" class="close"
                 data-dismiss="modal" aria-label="Close">
@@ -54,17 +58,17 @@
         </button>
       </div>
       <div class="modal-body">
-        <form method="POST">
+        <form method="POST" action="/market">
           {{ purchase_form.hidden_tag() }}
           <h4 class="text-center">
-            Are you sure you want to buy {{ item.name }} for {{ item.price }}$ ?
+            Are you sure you want to buy {{ item2.name }} for {{ item2.price }}$ ?
           </h4>
           <br>
           <h6 class="text-center">
             Confrim purchase by clicking Buy item button.
           </h6>
           <br>
-          <input id="purchased_item" name="purchased_item" type="hidden" value="{{item.id}}">
+          <input id="purchased_item" name="purchased_item" type="hidden" value="{{item2.id}}">
           {{ purchase_form.submit(class="btn btn-outline-success btn-block") }}
         </form>
       </div>

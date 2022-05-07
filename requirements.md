@@ -7,7 +7,7 @@
 6. View cart - Pranav
 7. Find item - Logan
 8. Bid on item - Logan
-9. Add item to seller store - Logan
+9. Compare Items - Logan
 10. Sort by options - Logan
 11. Rate item - Ece
 12. Seller page - Ece
