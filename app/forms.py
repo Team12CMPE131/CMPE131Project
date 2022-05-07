@@ -1,7 +1,7 @@
 from flask import Flask
 from wtforms.validators import Length, Email, EqualTo, DataRequired, ValidationError
 from app.models import User
-from wtforms import validators, StringField, DecimalField, FileField, RadioField, PasswordField, SubmitField
+from wtforms import validators, StringField, DecimalField, FileField, RadioField, PasswordField, SubmitField, HiddenField
 from flask_wtf import FlaskForm
 from wtforms.validators import Length, Email, EqualTo, DataRequired
 
@@ -48,3 +48,8 @@ class addToCart(FlaskForm):
 
 class deleteUser(FlaskForm):
     submit = SubmitField(label="Delete User")
+    
+class CompareItemButton(FlaskForm):
+    item_id = HiddenField(validators=[DataRequired()])
+    second_id = HiddenField()
+    submit = SubmitField(label='Compare Items...')

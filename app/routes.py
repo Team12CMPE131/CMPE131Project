@@ -2,10 +2,9 @@ from atexit import register
 from flask import render_template, session, redirect, request, flash, url_for, get_flashed_messages
 from sqlalchemy import null
 from app import myapp, db
-from app.forms import ListItemForm
 from app.models import Item,User 
 from flask_login import login_user, logout_user, login_required, current_user
-from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser
+from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton
 from random import choice
 
 
@@ -74,9 +73,11 @@ def list_item():
 @login_required 
 def market():
     purchase_form = purchaseItemForm()
+    compare_button = CompareItemButton()
+
     if request.method == "POST":
         purchased_item = request.form.get('purchased_item')
-        p_item_object = Item.query.filter_by(name=purchased_item).first()
+        p_item_object = Item.query.filter_by(id=purchased_item).first()
         if p_item_object:
             if current_user.can_purchase(p_item_object):
                 p_item_object.buy(current_user)
@@ -84,9 +85,6 @@ def market():
             else:
                 flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}!", category='danger')
         return redirect(url_for('market'))
-
-
-
 
     add_to_cart = addToCart()
     if request.method == "POST":
@@ -97,13 +95,9 @@ def market():
             flash(f"{cart_object.name} has been added to your cart!")
         return redirect(url_for('market'))
 
-
-
-
-
     if request.method == "GET":
         items = Item.query.filter_by(Owner=None)
-        return render_template('market.html', items=items, purchase_form=purchase_form, add_to_cart = add_to_cart)
+        return render_template('market.html', items=items, purchase_form=purchase_form, add_to_cart = add_to_cart, compare=compare_button)
 
 
 
@@ -178,3 +172,19 @@ def profile():
         
 
     return render_template('profile.html', delete_user = delete_user)
+
+@myapp.route('/compare', methods = ['POST'])
+def compare():
+    compare = CompareItemButton()
+    if compare.validate_on_submit():
+        items = Item.query.filter_by(Owner=None)
+        return render_template('market-compare.html', items=items, item_id=compare.item_id.data, form=compare)
+    
+@myapp.route('/comparing/<item1_id>&<item2_id>', methods = ['POST'])
+def comparing(item1_id, item2_id):
+    purchase_form = purchaseItemForm()
+    add_to_cart = addToCart()
+    item1 : Item = Item.query.get(item1_id)
+    item2 : Item = Item.query.get(item2_id)
+    price1 = item1.price > item2.price
+    return render_template('comparing.html', price1=price1, item1=item1, item2=item2, purchase_form=purchase_form, add_to_cart = add_to_cart)

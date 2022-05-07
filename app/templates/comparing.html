@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex">
+    <div>
+        {% include 'includes/compare_modal.html' %}
+        <p>{{item1.name}}#{{item1.id}}</p>
+        {% if price1 %}
+        <p class="text-danger">${{item1.price}}</p>
+        {% else %}
+        <p class="text-success">${{item1.price}}</p>
+        {% endif %}
+        <button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item1.id }}">Buy</button>
+    </div>
+    <div>
+        {% include 'includes/compare_modal.html' %}
+        <p>{{item2.name}}#{{item2.id}}</p>
+        {% if not price1 %}
+        <p class="text-danger">${{item2.price}}</p>
+        {% else %}
+        <p class="text-success">${{item2.price}}</p>
+        {% endif %}
+        <button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item2.id }}">Buy</button>
+    </div>
+</div>
+{% endblock content %}
