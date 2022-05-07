@@ -35,7 +35,11 @@
 								<td class="price">${{item.price}}</td>
 								<td>
 									<button type="button" class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">Description</button>
-									<button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Buy</button>
+									{% if item.type == 'auction' %}
+										<button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-BidConfirm-{{ item.id }}">Bid</button>
+									{% else %}
+										<button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Buy</button>
+									{% endif %}
 									<form method="POST" class="form" style="color: white;">
 										{{ add_to_cart.hidden_tag() }}
 										<input id="cart_item" name="cart_item" type="hidden" value="{{item.id}}">

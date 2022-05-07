@@ -76,3 +76,43 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="Modal-BidConfirm-{{ item.id }}"
+     tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">
+          <!-- -->
+          {{ item.name }}
+        </h5>
+        <button type="button" class="close"
+                data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST">
+          {{ bid.csrf_token }}
+          <h4 class="text-center">
+            Are you sure you want to bid on {{ item.name }}?
+          </h4>
+          <br>
+          <h6 class="text-center">
+            Confrim purchase by clicking Bid on item button.
+          </h6>
+          <br>
+          {{ bid.item_id(value = item.id) }}
+          {{ bid.price(class='form-control')}}
+          {{ bid.submit(class='btn btn-outline btn-success') }}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+                data-dismiss="modal">Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
