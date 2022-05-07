@@ -76,7 +76,7 @@ def market():
     purchase_form = purchaseItemForm()
     if request.method == "POST":
         purchased_item = request.form.get('purchased_item')
-        p_item_object = Item.query.filter_by(name=purchased_item).first()
+        p_item_object = Item.query.filter_by(id=purchased_item).first()
         if p_item_object:
             if current_user.can_purchase(p_item_object):
                 p_item_object.buy(current_user)
@@ -91,10 +91,12 @@ def market():
     add_to_cart = addToCart()
     if request.method == "POST":
         cart_item = request.form.get('cart_item')
-        cart_object = Item.query.filter_by(name = cart_item).first()
+        cart_object = Item.query.filter_by(id = cart_item).first()
         if cart_object:
             cart_object.add_to_cart(current_user)
             flash(f"{cart_object.name} has been added to your cart!")
+        else:
+            flash("no cart")
         return redirect(url_for('market'))
 
 
@@ -154,7 +156,7 @@ def results():
 @myapp.route('/mycart', methods = ['POST', 'GET'])
 def cart():
     if request.method == "GET":
-        items = Item.query.filter_by(in_cart= current_user.id)
+        items = Item.query.filter_by(cart= current_user.id)
         return render_template('cart.html', items=items)
     
  
