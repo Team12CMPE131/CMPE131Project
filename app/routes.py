@@ -5,7 +5,7 @@ from app import myapp, db
 from app.forms import ListItemForm
 from app.models import Item,User 
 from flask_login import login_user, logout_user, login_required, current_user
-from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser
+from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, deleteFromCart
 from random import choice
 
 
@@ -146,9 +146,29 @@ def results():
 
 @myapp.route('/mycart', methods = ['POST', 'GET'])
 def cart():
+    checkout_form = purchaseItemForm()
+    delete_from_cart = deleteFromCart()
+    if request.method == "POST":
+        checkout_item = request.form.get('checkout_item')
+        p_item_object = Item.query.filter_by(id=checkout_item).first()
+        if p_item_object:
+            if current_user.can_purchase(p_item_object):
+                p_item_object.buy(current_user)
+                flash(f"Congratulations! You purchased {p_item_object.name} for {p_item_object.price}$", category='success')
+            else:
+                flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}!", category='danger')
+        remove_item = request.form.get('delete_item')
+        item_to_remove = Item.query.filter_by(id=remove_item).first()
+        if item_to_remove:
+            item_to_remove.remove_from_cart()
+            
+    
+
+
+        return redirect(url_for('cart'))
     if request.method == "GET":
         items = Item.query.filter_by(cart= current_user.id)
-        return render_template('cart.html', items=items)
+        return render_template('cart.html', items=items, checkout_form = checkout_form, delete_from_cart = delete_from_cart)
     
  
 

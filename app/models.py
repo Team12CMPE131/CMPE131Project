@@ -23,12 +23,17 @@ class Item(db.Model):
 
     def buy(self, user):
         self.Owner = user.id
+        self.cart = None
         user.budget -= self.price
         db.session.commit()
 
     def add_to_cart(self,user):
         self.cart = user.id
         
+        db.session.commit()
+
+    def remove_from_cart(self):
+        self.cart = None
         db.session.commit()
 
 class User(UserMixin, db.Model):

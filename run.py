@@ -8,4 +8,4 @@ if '-d' in sys.argv:
     print('debug on')
     debug_mode = True
     
-myapp.run(debug=TRUE)
+myapp.run(debug=debug_mode)
