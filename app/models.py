@@ -1,3 +1,4 @@
+from sqlalchemy import ForeignKey
 from app import db, login, bcrypt
 from app import login
 from flask_login import UserMixin
@@ -22,11 +23,17 @@ class Item(db.Model):
 
     def buy(self, user):
         self.Owner = user.id
+        self.cart = None
         user.budget -= self.price
         db.session.commit()
 
     def add_to_cart(self,user):
-        self.in_cart = user.id
+        self.cart = user.id
+        
+        db.session.commit()
+
+    def remove_from_cart(self):
+        self.cart = None
         db.session.commit()
 
 class User(UserMixin, db.Model):

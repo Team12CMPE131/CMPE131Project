@@ -48,6 +48,11 @@ class addToCart(FlaskForm):
 
 class deleteUser(FlaskForm):
     submit = SubmitField(label="Delete User")
+
+
+class deleteFromCart(FlaskForm):
+    submit = SubmitField(label = "Delete from cart")
+
     
 class CompareItemButton(FlaskForm):
     item_id = HiddenField(validators=[DataRequired()])
