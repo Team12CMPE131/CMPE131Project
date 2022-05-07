@@ -1,10 +1,6 @@
-from sre_constants import RANGE_UNI_IGNORE
-from xml.dom import ValidationErr
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from flask import Flask
 from wtforms.validators import Length, Email, EqualTo, DataRequired, ValidationError
 from app.models import User
-
 from wtforms import validators, StringField, DecimalField, FileField, RadioField, PasswordField, SubmitField
 from flask_wtf import FlaskForm
 from wtforms.validators import Length, Email, EqualTo, DataRequired
@@ -43,3 +39,12 @@ class LoginForm(FlaskForm):
 
 class SearchForm(FlaskForm):
     name = StringField(label='What are you looking for?', validators=[DataRequired()])
+
+class purchaseItemForm(FlaskForm):
+    submit = SubmitField(label='Buy item')
+    
+class addToCart(FlaskForm):
+    submit = SubmitField(label="Add to Cart")
+
+class deleteUser(FlaskForm):
+    submit = SubmitField(label="Delete User")

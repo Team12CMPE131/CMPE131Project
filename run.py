@@ -1,3 +1,4 @@
+from pickle import TRUE
 from app import myapp
 import sys
 
@@ -7,4 +8,4 @@ if '-d' in sys.argv:
     print('debug on')
     debug_mode = True
     
-myapp.run(debug=debug_mode)
+myapp.run(debug=TRUE)

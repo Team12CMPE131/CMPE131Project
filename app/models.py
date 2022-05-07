@@ -14,6 +14,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(length = 128))
     email_address = db.Column(db.String(length = 1024), unique = True)
     budget = db.Column(db.Integer(), default = 1000)
+    in_cart = db.relationship('Item', backref = 'in_cart', lazy= True)
     items = db.relationship('Item', backref = 'owned_user', lazy = True)
     
     @property
@@ -34,6 +35,9 @@ class User(UserMixin, db.Model):
     def check_password_correction(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
 
+    def can_purchase(self, item_obj):
+        return self.budget >= item_obj.price
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))
@@ -44,7 +48,17 @@ class Item(db.Model):
     price = db.Column(db.Float, nullable = False)
     picture = db.Column(db.String, nullable = True)
     description = db.Column(db.String(length = 1024))
+    cart = db.Column(db.Integer(), db.ForeignKey('user.id'))
     Owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
 
     def __repr__(self):
         return '<Item {}>'.format(self.name)
+
+    def buy(self, user):
+        self.Owner = user.id
+        user.budget -= self.price
+        db.session.commit()
+
+    def add_to_cart(self,user):
+        self.in_cart = user.id
+        db.session.commit()
