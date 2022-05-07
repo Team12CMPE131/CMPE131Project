@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+
+{%block stylesheets%}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/results.css')}}">
+{%endblock%}
+
+{%block title%}
+    Results
+{%endblock%}
+
+{%block content%}
+    <div class="text-center container">
+        {%if items|length > 0%}
+            <ul class="list-group" id="results">
+            {%for item in items%}
+                <li class="list-group-item">
+                    <p class="name">{{item.name}}</p>
+                    <p>{{item.description}}</p>
+                    <p class="price">{{item.price}}</p>
+                </li>
+            {%endfor%}
+            </ul>
+        {%else%}
+            <h1>No Results Found :(</h1>
+        {%endif%}
+        <div class="buttons">
+            <button type="button" class="btn btn-primary" id='sort-name'>Sort by Name</button>
+            <button type="button" class="btn btn-primary" id='sort-price'>Sort by Price</button>
+        </div>
+    </div>
+
+{%endblock%}
+
+{%block scripts%}
+    <script type="text/javascript" src="static/scripts/sort.js"></script>
+{%endblock%}

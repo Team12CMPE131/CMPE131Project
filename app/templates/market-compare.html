@@ -23,21 +23,18 @@
 				<tbody>
 
         {%for item in items%}
-        {% include 'includes/items_modals.html' %}
             
 					<tr>
 						<td>{{item.id}}</td>
 						<td>{{item.name}}</td>
 						<td>${{item.price}}</td>
 						<td>
-							<button type="button" class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">Description</button>
-							<button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Buy</button>
-							<form method="POST" class="form-delete" style="color: white;">
-								{{ add_to_cart.hidden_tag() }}
-								<input id="cart_item" name="cart_item" type="hidden" value="{{item.name}}">
-								{{ add_to_cart.submit(class="btn btn-outline-secondary btn-secondary") }}
+							<form action="{{ url_for('comparing', item1_id=item_id, item2_id=item.id) }}" method="POST">
+								{{ form.csrf_token }}
+								{{ form.item_id(value=item_id) }}
+								{{ form.second_id(value=item.id) }}
+								{{ form.submit(class="btn btn-outline btn-info") }}
 							</form>
-
 						</td>
 					</tr>
         {%endfor%}
