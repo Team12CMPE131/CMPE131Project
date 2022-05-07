@@ -74,8 +74,19 @@ def list_item():
 def market():
     purchase_form = purchaseItemForm()
     compare_button = CompareItemButton()
-
+    search = SearchForm()
     add_to_cart = addToCart()
+    
+    
+    suggestions = ['iPad', 'Windows 10 PC', 'Of Mice and Men', 'Gaming Laptop', 'College Degree']
+    
+    if search.validate_on_submit():
+        items = Item.query.filter(Item.name.contains(search.name.data))
+        
+        return render_template('market.html', items=items, purchase_form=purchase_form, 
+                               add_to_cart = add_to_cart, compare=compare_button, 
+                               suggestion = choice(suggestions) + '...', form = search)
+
     if request.method == "POST":
         purchased_item = request.form.get('purchased_item')
         p_item_object = Item.query.filter_by(id=purchased_item).first()
@@ -95,17 +106,9 @@ def market():
         return redirect(url_for('market'))
     if request.method == "GET":
         items = Item.query.filter_by(Owner=None)
-        return render_template('market.html', items=items, purchase_form=purchase_form, add_to_cart = add_to_cart, compare=compare_button)
-
-
-
-    
-
-
-
-
-
-
+        return render_template('market.html', items=items, purchase_form=purchase_form, 
+                               add_to_cart = add_to_cart, compare=compare_button, 
+                               suggestion = choice(suggestions) + '...', form = search)
 
 @myapp.route('/registration', methods=['GET', 'POST'])
 def registration():
