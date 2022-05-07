@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+{%block title%}
+    MyCart
+{%endblock%}
+{%block content%}
+
+
+
+<div class="row" style="margin-top:20px; margin-left:20px">
+	<div class="col-8">
+		<h2>Items in the cart</h2>
+		<p>Click on the checkout button to buy the product</p>
+		<br>
+			<table class="table table-striped table-hover table-borderless table-dark">
+				<thead>
+					<tr>
+						<th scope="col">ID</th>
+						<th scope="col">Name</th>
+						<th scope="col">Price</th>
+						<th scope="col">Options</th>
+					</tr>
+				</thead>
+				<tbody>
+
+        {%for item in items%}
+        {% include 'includes/items_modals.html' %}
+            
+					<tr>
+						<td>{{item.id}}</td>
+						<td>{{item.name}}</td>
+						<td>${{item.price}}</td>
+						<td>
+							<button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">checkout</button>
+			
+
+						</td>
+					</tr>
+        {%endfor%}
+
+            
+				</tbody>
+			</table>
+		</div>
+		
+{%endblock%}
+
+
