@@ -74,6 +74,7 @@ def list_item():
 @login_required 
 def market():
     purchase_form = purchaseItemForm()
+    add_to_cart = addToCart()
     if request.method == "POST":
         purchased_item = request.form.get('purchased_item')
         p_item_object = Item.query.filter_by(id=purchased_item).first()
@@ -83,13 +84,6 @@ def market():
                 flash(f"Congratulations! You purchased {p_item_object.name} for {p_item_object.price}$", category='success')
             else:
                 flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}!", category='danger')
-        return redirect(url_for('market'))
-
-
-
-
-    add_to_cart = addToCart()
-    if request.method == "POST":
         cart_item = request.form.get('cart_item')
         cart_object = Item.query.filter_by(id = cart_item).first()
         if cart_object:
@@ -98,9 +92,6 @@ def market():
         else:
             flash("no cart")
         return redirect(url_for('market'))
-
-
-
 
 
     if request.method == "GET":
