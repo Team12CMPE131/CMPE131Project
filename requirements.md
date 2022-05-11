@@ -9,8 +9,9 @@
 8. Bid on item - Logan
 9. Compare Items - Logan
 10. Sort by options - Logan
-11. Rate item - Ece
-12. Seller page - Ece
+11. User Rating and review - Ece
+12. Seller page or See all items from all sellers - Ece
+
 
 ## Non-functional Requirements
 1. UI interactive interface
@@ -23,14 +24,14 @@
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
 - **Trigger:** <can be a list or short description> Customer selects "add to cart" option.9om.
 - **Primary Sequence:**
-  1. Customer goes on the main page.
+  1. Customer goes on the market page.
   2. Customer selects an item from the list.
-  3. Customer gets into the item’s page and clicks on the “add to cart” option to purchase it later on.
+  3. Customer clicks on the “add to cart” option.
   
 - **Primary Postconditions:** <can be a list or short description> 
-  1. Customer adds an item to the cart.
-  2. Item's price gets added to the total cost to puchase.
-  3. It gets closer to the cart limit every time customer adds an item.
+  1. System adds sellected item to the cart of the user.
+  2. System adds sellected item's price to the total cost to puchase.
+  3. System checks if cart limit is reached. 
 - **Alternate Sequence:** <you can have more than one alternate sequence to 
 describe multiple issues that may arise>  Customer adds more items to the cart and reaches the limit of the cart.
   
@@ -49,11 +50,13 @@ to describe multiple issues that may arise> Customer tries to add an item which 
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
 - **Trigger:** <can be a list or short description> Customer selects "view cart" option.
 - **Primary Sequence:**
-  1. After adding items to the cart, Customer clicks the “view cart” option.
-  2. The system displays all of the selected/added items in the cart to the customer.
-  3. Customer sees all selected items or an empty space if there is not any added item.
+  1. After adding items to the cart, user clicks the “view cart” option.
+  2. The system navigates the user to the cart page.
   
-- **Primary Postconditions:** <can be a list or short description> After sellecting view cart option, system displays the list of items that customer added in the cart.
+- **Primary Postconditions:** <can be a list or short description> 
+  1. System displays the list of items that customer added in the cart or an empty space if there is not any added item.
+  2. System displays the total cost of the items in the cart.
+  3. It gives you an option to purchase them.
 - **Alternate Sequence:** <you can have more than one alternate sequence to 
 describe multiple issues that may arise>  Customer selects view the cart option before adding any items in the cart.
   
@@ -77,7 +80,7 @@ describe multiple issues that may arise>  Customer selects view the cart option 
   
   
 
-4. Use Case Name: Rate item
+4. Use Case Name: User rating
 - **Pre-condition:** <can be a list or short description>  
   1. Customer has logged in.
   2. Customer has already bought the product.
@@ -86,7 +89,7 @@ describe multiple issues that may arise>  Customer selects view the cart option 
 - **Primary Sequence:**
   1. The rating dropdown appears.
   2. Customer selects a number from 1 to 5.
-  3. customer clicks post.
+  3. Customer clicks post.
  
   
 - **Primary Postconditions:** <can be a list or short description> 
@@ -122,4 +125,3 @@ to describe multiple issues that may arise>
   1. Route to new page or modal view pops up.
   2. Seller clicks cancel.
   3. Route back to seller page or close modal view.
-  
