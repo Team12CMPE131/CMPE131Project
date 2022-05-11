@@ -1,13 +1,12 @@
-from atexit import register
+from math import ceil
 from flask import render_template, session, redirect, request, flash, url_for, get_flashed_messages
-from sqlalchemy import null
 from app import myapp, db
-from app.models import Item,User 
+from app.models import AuctionItem, Item,User 
 from flask_login import login_user, logout_user, login_required, current_user
-
+from app.forms import BidButton, register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton
 from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton, deleteFromCart
-
 from random import choice
+from datetime import datetime, timedelta
 
 
 
@@ -59,8 +58,15 @@ def logout():
 def list_item():
     form = ListItemForm()
     if form.validate_on_submit():
-        new_item = Item(name = form.item_name.data, price = form.item_price.data, 
-                        picture = '', description = form.item_description.data, Owner = None)
+        if form.auction_choice.data == 'Auction':
+            now = datetime.now()
+            auction_end = now + timedelta(minutes=ceil(form.auction_length.data))
+            new_item = AuctionItem(name = form.item_name.data, price = form.item_price.data, 
+                        picture = '', description = form.item_description.data, 
+                        Owner = None, auction_end = auction_end, type = 'auction')
+        else:
+            new_item = Item(name = form.item_name.data, price = form.item_price.data, 
+                        picture = '', description = form.item_description.data, Owner = None, type = 'sale')
         db.session.add(new_item)
         db.session.commit()
     return render_template('list.html', form=form)
@@ -75,10 +81,32 @@ def list_item():
 @login_required 
 def market():
     purchase_form = purchaseItemForm()
-
-    add_to_cart = addToCart()
-
     compare_button = CompareItemButton()
+    search = SearchForm()
+    add_to_cart = addToCart()
+    bid = BidButton()
+    
+    
+    suggestions = ['iPad', 'Windows 10 PC', 'Of Mice and Men', 'Gaming Laptop', 'College Degree']
+    
+    for auction in AuctionItem.query.all():
+        auction.validate_time()
+    
+    if search.validate_on_submit():
+        items = list(Item.query.filter(Item.name.contains(search.name.data)))
+        
+        return render_template('market.html', items=items, purchase_form=purchase_form, 
+                               add_to_cart = add_to_cart, compare=compare_button, 
+                               suggestion = choice(suggestions) + '...', form = search, bid=bid)
+
+    if bid.validate_on_submit():
+        print('bidded')
+        item = AuctionItem.query.get(bid.item_id.data)
+        print(item)
+        if current_user.budget > bid.price.data:
+            item.bid(current_user, bid.price.data)
+        else:
+            flash('Not enough money!')
 
 
     if request.method == "POST":
@@ -106,17 +134,9 @@ def market():
 
     if request.method == "GET":
         items = Item.query.filter_by(Owner=None)
-        return render_template('market.html', items=items, purchase_form=purchase_form, add_to_cart = add_to_cart, compare=compare_button)
-
-
-
-    
-
-
-
-
-
-
+        return render_template('market.html', items=items, purchase_form=purchase_form, 
+                               add_to_cart = add_to_cart, compare=compare_button, 
+                               suggestion = choice(suggestions) + '...', form = search, bid=bid)
 
 @myapp.route('/registration', methods=['GET', 'POST'])
 def registration():
@@ -179,14 +199,6 @@ def cart():
     if request.method == "GET":
         items = Item.query.filter_by(cart= current_user.id)
         return render_template('cart.html', items=items, checkout_form = checkout_form, delete_from_cart = delete_from_cart)
-    
- 
-
-
-
-
-
-
 
 @myapp.route('/profile', methods = ['POST', 'GET'])
 def profile():

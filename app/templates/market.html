@@ -9,7 +9,12 @@
 <div class="row" style="margin-top:20px; margin-left:20px">
 	<div class="col-11">
 		<h2>Available items on the Market</h2>
-		<p>Click on one of the items to start buying</p>
+		<p>Click on one of the items to start buying, or use the search function to filter results</p>
+		<form action="{{url_for('market')}}" method="POST">
+			{{ form.csrf_token }}
+			{{ form.name.label }}
+			{{ form.name(class="form-control", placeholder="") }}
+		</form>
 		<br>
 			<table class="table table-striped table-hover table-borderless table-dark">
 				<thead>
@@ -20,33 +25,39 @@
 						<th scope="col">Options</th>
 					</tr>
 				</thead>
-				<tbody>
+			<tbody id="results">
+				{%for item in items%}
+				{% include 'includes/items_modals.html' %}
+					
+							<tr>
+								<td>{{item.id}}</td>
+								<td class="name">{{item.name}}</td>
+								<td class="price">${{item.price}}</td>
+								<td>
+									<button type="button" class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">Description</button>
+									{% if item.type == 'auction' %}
+										<button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-BidConfirm-{{ item.id }}">Bid</button>
+									{% else %}
+										<button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Buy</button>
+									{% endif %}
+									<form method="POST" class="form" style="color: white;">
+										{{ add_to_cart.hidden_tag() }}
+										<input id="cart_item" name="cart_item" type="hidden" value="{{item.id}}">
+										{{ add_to_cart.submit(class="btn btn-secondary") }}
+									</form>
 
-        {%for item in items%}
-        {% include 'includes/items_modals.html' %}
-            
-					<tr>
-						<td>{{item.id}}</td>
-						<td>{{item.name}}</td>
-						<td>${{item.price}}</td>
-						<td>
-							<button type="button" class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">Description</button>
-							<button type="button" class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Buy</button>
-							<form method="POST" class="form" style="color: white;">
-								{{ add_to_cart.hidden_tag() }}
-								<input id="cart_item" name="cart_item" type="hidden" value="{{item.id}}">
-								{{ add_to_cart.submit(class="btn btn-secondary") }}
-							</form>
-
-						</td>
-					</tr>
-        {%endfor%}
-
-            
-				</tbody>
+								</td>
+							</tr>
+				{%endfor%}
+			</tbody>
 			</table>
-
-
+			<div class="d-flex">
+				<button class="btn btn-outline btn-primary flex-grow-1" id="sort-name">Sort by Name</button>
+				<button class="btn btn-outline btn-primary flex-grow-1" id="sort-price">Sort by Price</button>
+			</div>
 {%endblock%}
 
+{% block scripts %}
+<script type="text/javascript" src="{{url_for('static', filename='scripts/sort.js')}}"></script>
+{% endblock scripts %}
 
