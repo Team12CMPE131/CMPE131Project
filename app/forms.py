@@ -3,7 +3,7 @@ from wtforms.validators import Length, Email, EqualTo, DataRequired, ValidationE
 from app.models import User
 from wtforms import validators, StringField, DecimalField, FileField, RadioField, PasswordField, SubmitField, HiddenField
 from flask_wtf import FlaskForm
-from wtforms.validators import Length, Email, EqualTo, DataRequired
+from wtforms.validators import Length, Email, EqualTo, DataRequired, NumberRange
 
 class ListItemForm(FlaskForm):
     item_name = StringField('Enter Item Name', [validators.DataRequired(), validators.Length(max = 20)])
@@ -11,6 +11,8 @@ class ListItemForm(FlaskForm):
     item_description = StringField('Enter Item Description', [validators.DataRequired(), validators.Length(max = 280)])
     item_picture = FileField('Upload Item Picture')
     auction_choice = RadioField('Auction?', [validators.DataRequired()], choices=['Auction', 'Sale'])
+    auction_length = DecimalField('Length of Auction', 
+                                  validators=[NumberRange(0, 59, 'Must be a value between 0 and 59')])
     submit = SubmitField('List Item on Market!')
 
 class register(FlaskForm):
@@ -48,8 +50,18 @@ class addToCart(FlaskForm):
 
 class deleteUser(FlaskForm):
     submit = SubmitField(label="Delete User")
+
+
+class deleteFromCart(FlaskForm):
+    submit = SubmitField(label = "Delete from cart")
+
     
 class CompareItemButton(FlaskForm):
     item_id = HiddenField(validators=[DataRequired()])
     second_id = HiddenField()
     submit = SubmitField(label='Compare Items...')
+    
+class BidButton(FlaskForm):
+    item_id = HiddenField(validators=[DataRequired()])
+    price = DecimalField(validators=[DataRequired()])
+    submit = SubmitField(label='Confirm Bid')

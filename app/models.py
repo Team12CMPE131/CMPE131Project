@@ -1,3 +1,4 @@
+from datetime import datetime
 from app import db, login, bcrypt
 from app import login
 from flask_login import UserMixin
@@ -14,6 +15,7 @@ class Item(db.Model):
     price = db.Column(db.Float, nullable = False)
     picture = db.Column(db.String, nullable = True)
     description = db.Column(db.String(length = 1024))
+    type = db.Column(db.String, nullable = False)
     cart = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable = True)
     Owner = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable = True)
 
@@ -22,11 +24,47 @@ class Item(db.Model):
 
     def buy(self, user):
         self.Owner = user.id
+        self.cart = None
         user.budget -= self.price
         db.session.commit()
 
     def add_to_cart(self,user):
-        self.in_cart = user.id
+        self.cart = user.id
+        db.session.commit()
+        
+    def set_price(self, price):
+        self.price = price
+        
+    def set_owner(self, user_id):
+        self.Owner = user_id
+        db.session.commit()
+
+class AuctionItem(Item):
+    id = db.Column(db.Integer, db.ForeignKey('item.id'), primary_key = True)
+    auction_end = db.Column(db.DateTime)
+    bid_owner = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
+    def validate_time(self):
+        if datetime.now() < self.auction_end:
+            return True
+        else:
+            self.handle_end()
+            return False
+            
+    def bid(self, user, price):
+        if self.validate_time() and price >= super().price:
+            difference = float(price) - float(super().price)
+            user.budget -= difference
+            super().set_price(price + 1)
+            self.bid_owner = user.id
+            db.session.commit()
+    
+    def handle_end(self):
+        super().set_owner(self.bid_owner)
+        
+
+    def remove_from_cart(self):
+        self.cart = None
         db.session.commit()
 
 class User(UserMixin, db.Model):
@@ -37,6 +75,7 @@ class User(UserMixin, db.Model):
     budget = db.Column(db.Integer(), default = 1000)
     in_cart = db.relationship('Item', backref = 'in_cart', lazy= True, foreign_keys= [Item.cart])
     items = db.relationship('Item', backref = 'owned_user', lazy = True, foreign_keys = [Item.Owner])
+    bids = db.relationship('AuctionItem', backref = 'bid_holder', lazy=True, foreign_keys = [AuctionItem.bid_owner])
     
     @property
     def prettier_budget(self):
