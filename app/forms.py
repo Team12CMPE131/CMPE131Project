@@ -71,4 +71,4 @@ class userRating(FlaskForm):
     item_id = StringField('Item ID:')
     rating= IntegerField('Rating:')
     text= TextAreaField('Review:')
-    submit = SubmitField(label ='Make Review')
+    submit = SubmitField(label ='Submit')
