@@ -102,3 +102,23 @@ class User(UserMixin, db.Model):
 def load_user(id):
     return User.query.get(int(id))
 
+class Rating(db.Model):
+    user = CharField()
+    item_id = CharField()
+    rating = IntegerField()
+    text = TextField()
+    rating_time = DateTimeField(default=datetime.datetime.now)
+    
+    @classmethod
+    def add_rating(cls, user, item_id, text):
+        try:
+            cls.create(
+                user = user,
+                item_id = item_id,
+                rating= rating
+                text = text
+            )
+        except IntegrityError :
+            raise ValueError("ERROR")
+
+
