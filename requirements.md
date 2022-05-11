@@ -3,14 +3,14 @@
 2. Logout - Ece
 3. Create new account - Pranav
 4. Delete account - Pranav
-5. Add to cart - Pranav
-6. View cart - Pranav
-7. Find item - Logan
-8. Bid on item - Logan
-9. Compare Items - Logan
-10. Sort by options - Logan
-11. Rate item - Ece
-12. Seller page - Ece
+5. See all items from all users
+6. Add Items
+7. Add to cart - Pranav
+8. User Rating - Ece
+9. Find items - Logan
+10. Bid on Item - Logan
+11. Sort Items by options - Logan
+12. Compare Items or Adding Picture to Item or something else
 
 ## Non-functional Requirements
 1. UI interactive interface
@@ -45,20 +45,20 @@ to describe multiple issues that may arise> Customer tries to add an item which 
   3. The system prompts user to select an avalible item to add the cart.
 
   
-2. Use Case Name:  View the cart
+2. Use Case Name:  See all Items available from all of the sellers
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
-- **Trigger:** <can be a list or short description> Customer selects "view cart" option.
+- **Trigger:** <can be a list or short description> Customer selects "market page" option.
 - **Primary Sequence:**
-  1. After adding items to the cart, Customer clicks the “view cart” option.
-  2. The system displays all of the selected/added items in the cart to the customer.
-  3. Customer sees all selected items or an empty space if there is not any added item.
+  1. 
+  2. 
+  3. 
   
-- **Primary Postconditions:** <can be a list or short description> After sellecting view cart option, system displays the list of items that customer added in the cart.
+- **Primary Postconditions:** <can be a list or short description> 
 - **Alternate Sequence:** <you can have more than one alternate sequence to 
-describe multiple issues that may arise>  Customer selects view the cart option before adding any items in the cart.
+describe multiple issues that may arise>  
   
-  1. The system displays an empty cart list since no item is added.
-  2. The system prompts the customer to select an item to the cart.
+  1. 
+  2. 
   
   
   
@@ -77,7 +77,7 @@ describe multiple issues that may arise>  Customer selects view the cart option 
   
   
 
-4. Use Case Name: Rate item
+4. Use Case Name: User Rating
 - **Pre-condition:** <can be a list or short description>  
   1. Customer has logged in.
   2. Customer has already bought the product.
@@ -94,7 +94,7 @@ describe multiple issues that may arise>  Customer selects view the cart option 
   1. The rating is now added and included in the overall rating of the product.
 
   
-5. Use Case Name:  Find item
+5. Use Case Name:  Find Item
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
 - **Trigger:** <can be a list or short description> Customer clicks on search icon. 
 - **Primary Sequence:**
@@ -106,7 +106,7 @@ describe multiple issues that may arise>  Customer selects view the cart option 
 - **Primary Postconditions:** <can be a list or short description> 
   1. Results of items display on the page
   
-6. Use Case Name: Add item to seller store 
+6. Use Case Name: Add Items 
 - **Pre-condition:** <can be a list or short description> Seller has logged in.
 - **Trigger:** <can be a list or short description> On seller page (seller view), seller clicks button "List New Item".
 - **Primary Sequence:**
