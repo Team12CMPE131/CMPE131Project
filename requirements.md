@@ -23,6 +23,8 @@
 ### 1. Use Case Name:  Add to cart
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
 - **Trigger:** <can be a list or short description> User clicks "add to cart" option.
+- **Summary:** This feature can be used by user to add items to cart
+- **Actors:** User and Server
 - **Primary Sequence:**
   1. User Login.
   2. User is directed to Market Page.
@@ -36,6 +38,7 @@
 ### 2. Use Case Name: View the cart
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
 - **Trigger:** <can be a list or short description> User clicks "view cart" option.
+- **Actors:** User and Server
 - **Primary Sequence:**
   1. User clicks view cart
   2. The system navigates the user to the cart page.
@@ -48,6 +51,7 @@
 ### 3. Use Case Name:  Bid on item
 - **Pre-condition:** <can be a list or short description> Customer has logged in.
 - **Trigger:** <can be a list or short description> Customer clicks on the bid button under the item.
+- **Actors:** User and Server
 - **Primary Sequence:**
   1. User clicks on market page.
   2. User clicks the bid textbox and enters the bid.
@@ -64,6 +68,8 @@
   2. User has already bought the product.
   
 - **Trigger:** <can be a list or short description> User clicks on the rate product button.
+- **Summary:** This feature allows buyer to add rating to seller.
+- **Actors:** User and Server
 - **Primary Sequence:**
   1. The rating dropdown appears.
   2. User selects a number from 1 to 5.
@@ -78,6 +84,8 @@
 ### 5. Use Case Name: Find item
 - **Pre-condition:** <can be a list or short description> User has logged in.
 - **Trigger:** <can be a list or short description> User clicks on search icon. 
+- **Summary:** This feature allows user to find item in the market.
+- **Actors:** User and Server
 - **Primary Sequence:**
   1. User goes to search page or dropdown search appears.
   2. User enters string
@@ -90,6 +98,8 @@
 ### 6. Use Case Name: Add item to seller store 
 - **Pre-condition:** <can be a list or short description> Seller has logged in.
 - **Trigger:** <can be a list or short description> On seller page (seller view), seller clicks button "List New Item".
+- **Summary:** This feature allows user to see all the products by the seller.
+- **Actors:** User and Server
 - **Primary Sequence:**
   1. User is on Listing page.
   2. User enters the details of items
