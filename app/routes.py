@@ -218,7 +218,7 @@ def profile():
 def compare():
     compare = CompareItemButton()
     if compare.validate_on_submit():
-        items = Item.query.filter_by(Owner=None)
+        items = Item.query.all()
         return render_template('market-compare.html', items=items, item_id=compare.item_id.data, form=compare)
     
 @myapp.route('/comparing/<item1_id>&<item2_id>', methods = ['POST'])

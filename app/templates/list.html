@@ -33,7 +33,7 @@
         {%endfor%}
       </div>
       {{ form.auction_length.label }}
-      {{ form.auction_length(class = "form-control", id = "auctionLength", placeholder='In minutes...')}}
+      {{ form.auction_length(class = "form-control", id = "auctionLength", value = 0)}}
       {{ form.submit(class = "btn btn-lg btn-block btn-primary") }}
     </form>
   </div>
