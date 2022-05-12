@@ -118,10 +118,7 @@ def market():
                 flash(f"Congratulations! You purchased {p_item_object.name} for {p_item_object.price}$", category='success')
             else:
                 flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}!", category='danger')
-        return redirect(url_for('market'))
 
-    add_to_cart = addToCart()
-    if request.method == "POST":
 
         cart_item = request.form.get('cart_item')
         cart_object = Item.query.filter_by(id = cart_item).first()
@@ -131,6 +128,12 @@ def market():
         else:
             flash("no cart")
         return redirect(url_for('market'))
+        
+
+
+
+
+
 
     if request.method == "GET":
         items = Item.query.filter_by(Owner=None)
@@ -188,7 +191,7 @@ def cart():
             else:
                 flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}!", category='danger')
         remove_item = request.form.get('delete_item')
-        item_to_remove = Item.query.filter_by(id=remove_item).first()
+        item_to_remove = Item.query.get(remove_item)
         if item_to_remove:
             item_to_remove.remove_from_cart()
             

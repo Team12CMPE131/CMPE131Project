@@ -38,6 +38,11 @@ class Item(db.Model):
     def set_owner(self, user_id):
         self.Owner = user_id
         db.session.commit()
+    def remove_from_cart(self):
+        self.cart = None
+        db.session.commit()
+        
+        
 
 class AuctionItem(Item):
     id = db.Column(db.Integer, db.ForeignKey('item.id'), primary_key = True)
