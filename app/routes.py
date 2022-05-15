@@ -4,7 +4,7 @@ from app import myapp, db
 from app.models import AuctionItem, Item,User 
 from flask_login import login_user, logout_user, login_required, current_user
 from app.forms import BidButton, register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton
-from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton, deleteFromCart
+from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton, deleteFromCart, SellerPageForm
 from random import choice
 from datetime import datetime, timedelta
 
@@ -64,9 +64,13 @@ def list_item():
             new_item = AuctionItem(name = form.item_name.data, price = form.item_price.data, 
                         picture = '', description = form.item_description.data, 
                         Owner = None, auction_end = auction_end, type = 'auction')
+            
         else:
             new_item = Item(name = form.item_name.data, price = form.item_price.data, 
                         picture = '', description = form.item_description.data, Owner = None, type = 'sale')
+
+
+        new_item.set_seller(current_user)             
         db.session.add(new_item)
         db.session.commit()
     return render_template('list.html', form=form)
@@ -232,3 +236,12 @@ def comparing(item1_id, item2_id):
     item2 : Item = Item.query.get(item2_id)
     price1 = item1.price > item2.price
     return render_template('comparing.html', price1=price1, item1=item1, item2=item2, purchase_form=purchase_form, add_to_cart = add_to_cart)
+
+
+
+
+@myapp.route('/seller_page)', methods = ['POST', 'GET'])
+def seller():
+    seller_search = SellerPageForm()
+    items = Item.query.filter_by(seller = current_user.id)
+    return render_template('seller.html', items = items, username = current_user, form = seller_search)

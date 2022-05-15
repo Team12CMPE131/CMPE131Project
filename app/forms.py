@@ -42,6 +42,9 @@ class LoginForm(FlaskForm):
 class SearchForm(FlaskForm):
     name = StringField(label='What are you looking for?', validators=[DataRequired()])
 
+class SellerPageForm(FlaskForm):
+    name = StringField(label= 'Which seller are you looking for? ', validators=[DataRequired()])
+
 class purchaseItemForm(FlaskForm):
     submit = SubmitField(label='Buy item')
     

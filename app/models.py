@@ -16,6 +16,7 @@ class Item(db.Model):
     picture = db.Column(db.String, nullable = True)
     description = db.Column(db.String(length = 1024))
     type = db.Column(db.String, nullable = False)
+    seller = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable = True)
     cart = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable = True)
     Owner = db.Column(db.Integer(), db.ForeignKey('user.id'), nullable = True)
 
@@ -25,6 +26,7 @@ class Item(db.Model):
     def buy(self, user):
         self.Owner = user.id
         self.cart = None
+        self.seller = None
         user.budget -= self.price
         db.session.commit()
 
@@ -41,6 +43,11 @@ class Item(db.Model):
     def remove_from_cart(self):
         self.cart = None
         db.session.commit()
+
+    def set_seller(self, user):
+        self.seller = user.id
+        db.session.commit()
+
         
         
 
@@ -78,6 +85,7 @@ class User(UserMixin, db.Model):
     password_hash = db.Column(db.String(length = 128))
     email_address = db.Column(db.String(length = 1024), unique = True)
     budget = db.Column(db.Integer(), default = 1000)
+    listed_items = db.relationship('Item', backref = 'listed_items', lazy= True, foreign_keys= [Item.seller])
     in_cart = db.relationship('Item', backref = 'in_cart', lazy= True, foreign_keys= [Item.cart])
     items = db.relationship('Item', backref = 'owned_user', lazy = True, foreign_keys = [Item.Owner])
     bids = db.relationship('AuctionItem', backref = 'bid_holder', lazy=True, foreign_keys = [AuctionItem.bid_owner])
