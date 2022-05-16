@@ -1,10 +1,11 @@
 from math import ceil
 from flask import render_template, session, redirect, request, flash, url_for, get_flashed_messages
+from requests import delete
 from app import myapp, db
 from app.models import AuctionItem, Item,User 
 from flask_login import login_user, logout_user, login_required, current_user
 from app.forms import BidButton, register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton
-from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton, deleteFromCart, SellerPageForm
+from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton, deleteFromCart, SellerPageForm, changePasssword
 from random import choice
 from datetime import datetime, timedelta
 
@@ -16,12 +17,6 @@ def home():
     form = SearchForm()
     suggestions = ['Bananas', 'iPad', 'Gaming Laptop']
     return render_template('home.html', form=form, suggestion=str(choice(suggestions)) + '...')
-# @login_required
-# @app.route('/sellerspage')
-# def seller_page():
-# items= Item.query.filter_by( username= form.username.data).first()
-# return render_template('sellerspage.html', items=items)
-
 
 
 
@@ -207,19 +202,43 @@ def cart():
         items = Item.query.filter_by(cart= current_user.id)
         return render_template('cart.html', items=items, checkout_form = checkout_form, delete_from_cart = delete_from_cart)
 
+
+
+
+
+
 @myapp.route('/profile', methods = ['POST', 'GET'])
 def profile():
 
     delete_user = deleteUser()
-    
+    form_change_password = changePasssword()
+
     if request.method == "POST":
-        db.session.delete(current_user)
-        db.session.commit()
-        flash("User deleted successfully")
-        return redirect(url_for('login'))
+        if form_change_password.validate_on_submit():
+            new_password = form_change_password.new_password.data
+            current_user.change_password(new_password)
+
+
+            
+        elif delete_user.validate_on_submit():
+            db.session.delete(current_user)
+            db.session.commit()
+            flash("User deleted successfully")
+            return redirect(url_for('login'))
+            
+
+
+
         
 
-    return render_template('profile.html', delete_user = delete_user)
+    return render_template('profile.html', delete_user = delete_user, form_change_password = form_change_password)
+
+
+
+
+
+
+
 
 @myapp.route('/compare', methods = ['POST'])
 def compare():
@@ -242,6 +261,24 @@ def comparing(item1_id, item2_id):
 
 @myapp.route('/seller_page)', methods = ['POST', 'GET'])
 def seller():
+    
     seller_search = SellerPageForm()
+    checkout_form = purchaseItemForm()
+    if request.method == "POST":
+        checkout_item = request.form.get('checkout_item')
+        p_item_object = Item.query.filter_by(id=checkout_item).first()
+        if p_item_object:
+            if current_user.can_purchase(p_item_object):
+                p_item_object.buy(current_user)
+                flash(f"Congratulations! You purchased {p_item_object.name} for {p_item_object.price}$", category='success')
+            else:
+                flash(f"Unfortunately, you don't have enough money to purchase {p_item_object.name}!", category='danger')
+
+    if seller_search.validate_on_submit():
+
+        seller_user = User.query.filter_by(username = seller_search.name.data)
+        items = Item.query.filter_by(seller = seller_user.first().id)
+        
+        return render_template('seller.html', items = items, form = seller_search)
     items = Item.query.filter_by(seller = current_user.id)
-    return render_template('seller.html', items = items, username = current_user, form = seller_search)
+    return render_template('seller.html', items = items, username = current_user, form = seller_search, checkout_form = checkout_form)

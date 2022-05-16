@@ -75,3 +75,7 @@ class userRating(FlaskForm):
     rating= IntegerField('Rating:')
     text= TextAreaField('Review:')
     submit = SubmitField(label ='Submit')
+
+class changePasssword(FlaskForm):
+    new_password = PasswordField(label='Password: ', validators=[Length(min=6), DataRequired()])
+    submit = SubmitField(label ='Submit')

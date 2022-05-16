@@ -111,6 +111,10 @@ class User(UserMixin, db.Model):
     def can_purchase(self, item_obj):
         return self.budget >= item_obj.price
 
+    def change_password(self, new_password):
+        self.password_hash = bcrypt.generate_password_hash(new_password).decode('utf-8')
+        db.session.commit()
+
 @login.user_loader
 def load_user(id):
     return User.query.get(int(id))

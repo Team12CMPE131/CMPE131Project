@@ -34,6 +34,13 @@
 						<td>{{item.id}}</td>
 						<td>{{item.name}}</td>
 						<td>${{item.price}}</td>
+						<td>
+							<form method="POST">
+                                {{ checkout_form.hidden_tag() }}
+                                <input id="checkout_item" name="checkout_item" type="hidden" value="{{item.id}}">
+                                {{ checkout_form.submit(class="btn btn-outline-success btn-block") }}
+                            </form>
+						</td>
 
 					</tr>
         {%endfor%}
