@@ -13,6 +13,7 @@
 12. Seller page or See all items from all sellers - Ece
 13. Extra Feature - Budget
 
+
 ## Non-functional Requirements
 1. UI interactive interface
 2. scalability
@@ -62,23 +63,24 @@
   1. Bid now appears in the list of bids.
   2. User gets the item after the bid timing finshes
   
-### 4. Use Case Name: User rating
+### 4. Use Case Name: Changing Password
 - **Pre-condition:** <can be a list or short description>  
   1. User has logged in.
-  2. User has already bought the product.
   
-- **Trigger:** <can be a list or short description> User clicks on the rate product button.
-- **Summary:** This feature allows buyer to add rating to seller.
+- **Trigger:** <can be a list or short description> User clicks on the Change Password button.
+- **Summary:** This feature allows buyer to change the passwort for his/her account.
 - **Actors:** User and Server
 - **Primary Sequence:**
-  1. The rating dropdown appears.
-  2. User selects a number from 1 to 5.
-  3. Customer clicks post.
+  1. User clicks to change the password.
+  2. User types the new password.
+  3. User re-types the password for security.
+  4. User clicks submit.
  
   
 - **Primary Postconditions:** <can be a list or short description> 
 
-  1. The rating is now added and included in the overall rating of the product.
+  1. The system deletes the old password from the database.
+  2. The system saved the new password sellected from the user.
 
   
 ### 5. Use Case Name: Find item

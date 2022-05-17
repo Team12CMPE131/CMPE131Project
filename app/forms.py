@@ -85,6 +85,7 @@ class BidButton(FlaskForm):
     price = DecimalField(validators=[DataRequired()])
     submit = SubmitField(label='Confirm Bid')
     
+
 class userRating(FlaskForm):
     '''A form to rate a user or seller.'''
     username = StringField('User:')
