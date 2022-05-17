@@ -13,5 +13,25 @@
         <input id="deleted_user" name="deleted_user" type="hidden" value="{{current_user.username}}">
         {{ delete_user.submit(class="btn btn-danger") }}
     </form>
+    <form method="POST" class="form-change_password" style="color: white;">
+        {{form_change_password.hidden_tag()}}
+    
+        <h1 class="h3 mb-3 font-weight-normal">
+            Change Password
+        </h1>
+
+        {{form_change_password.new_password.label()}}
+        {{ form_change_password.new_password(class = "form-control", placeholder="Password")}}
+
+
+
+
+
+        <br>
+        <br>
+
+        {{form_change_password.submit(class = "btn btn-primary")}}
+
+    </form>
 </body>
 {%endblock%}

@@ -42,6 +42,9 @@ class LoginForm(FlaskForm):
 class SearchForm(FlaskForm):
     name = StringField(label='What are you looking for?', validators=[DataRequired()])
 
+class SellerPageForm(FlaskForm):
+    name = StringField(label= 'Which seller are you looking for? ', validators=[DataRequired()])
+
 class purchaseItemForm(FlaskForm):
     submit = SubmitField(label='Buy item')
     
@@ -71,4 +74,8 @@ class userRating(FlaskForm):
     item_id = StringField('Item ID:')
     rating= IntegerField('Rating:')
     text= TextAreaField('Review:')
+    submit = SubmitField(label ='Submit')
+
+class changePasssword(FlaskForm):
+    new_password = PasswordField(label='Password: ', validators=[Length(min=6), DataRequired()])
     submit = SubmitField(label ='Submit')
