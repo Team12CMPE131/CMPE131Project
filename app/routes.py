@@ -5,7 +5,7 @@ from app.models import AuctionItem, Item,User
 from flask_login import login_user, logout_user, login_required, current_user
 from app.forms import BidButton, register, LoginForm, SearchForm, purchaseItemForm, addToCart, 
 User, ListItemForm, CompareItemButton
-from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton, deleteFromCart, new_rating
+from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton, deleteFromCart, 
 from random import choice
 from datetime import datetime, timedelta
 
@@ -233,45 +233,4 @@ def comparing(item1_id, item2_id):
 
 
 
-@app.route('/ratings')
-def add_rating():
-        return render_template("ratings.html", user=current_user, app=app, ratings=models.Rating)
 
-@app.route('/ratings/edit/<id>', methods=['GET', 'POST'])
-def edit_rating(id):
-    if current_user.is_admin:
-        rating = models.Rating.get(models.Rating.id == id)
-        form = forms.new_rating(obj=rating)
-        if form.validate_on_submit():
-            q = models.Rating.update(
-                user = form.user.data,
-                item_id = form.item_id.data,
-                rating = form.rating.data
-                text = form.text.data
-            ).where(models.Rating.id == id)
-            q.execute()
-        return render_template("edit.html", user=current_user, form=form)
-    else:
-        return redirect(url_for('market'))
-
-@app.route('/ratings/new/', methods=('GET', 'POST'))
-@login_required
-def newRating():
-    if current_user.is_admin:
-        form = forms.new_rating()
-        if form.validate_on_submit():
-            models.Rating.add_rating(
-                user = form.user.data,
-                item_id = form.item_id.data,
-                rating = form.rating.data
-                text = form.text.data
-            )
-            return redirect(url_for('add_rating_dashboard'))
-        return render_template("new.html", user=current_user, form=form)
-    else:
-        return redirect(url_for('market'))
-
-
-@app.route('/ratings/')
-def all_ratings():
-    return render_template('reviews.html', user=current_user, ratings=models.Rating)
