@@ -1,6 +1,13 @@
+'''Contains the routes of the application.
+
+This module handles all the routes and logic of the FlaskApp. 
+This file should be imported in __init__.py to initialize all methods/routes of the FlaskApp.
+
+'''
+
+
 from math import ceil
-from flask import render_template, session, redirect, request, flash, url_for, get_flashed_messages
-from requests import delete
+from flask import render_template, redirect, request, flash, url_for
 from app import myapp, db
 from app.models import AuctionItem, Item,User 
 from flask_login import login_user, logout_user, login_required, current_user
@@ -14,17 +21,18 @@ from datetime import datetime, timedelta
 @myapp.route('/')
 @myapp.route('/home', methods=['GET'])
 def home():
-    form = SearchForm()
-    suggestions = ['Bananas', 'iPad', 'Gaming Laptop']
-    return render_template('home.html', form=form, suggestion=str(choice(suggestions)) + '...')
+    '''The home page.'''
+    return render_template('home.html')
 
 
 
 @myapp.route('/login', methods= ['POST','GET'])
 def login():
+    '''The login page.'''
+    
     form = LoginForm()
     if form.validate_on_submit():
-        attempted_user = User.query.filter_by(username=form.username.data).first()
+        attempted_user : User = User.query.filter_by(username=form.username.data).first()
         if attempted_user and attempted_user.check_password_correction(
                 attempted_password=form.password.data):
             login_user(attempted_user)
@@ -232,13 +240,6 @@ def profile():
         
 
     return render_template('profile.html', delete_user = delete_user, form_change_password = form_change_password)
-
-
-
-
-
-
-
 
 @myapp.route('/compare', methods = ['POST'])
 def compare():
