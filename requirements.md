@@ -16,7 +16,7 @@
 
 ## Non-functional Requirements
 1. UI interactive interface
-2. scalability
+2. user security using hashcode for password
 3. usability
 4. compatibility
 
