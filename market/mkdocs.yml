@@ -1,1 +1,6 @@
-site_name: My Docs
+
+site_name: Crazy marketplace
+site_url: https://crazy-marketplace.com/
+nav:
+    - Home: index.md
+theme: readthedocs
