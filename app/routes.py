@@ -282,3 +282,4 @@ def seller():
         return render_template('seller.html', items = items, form = seller_search)
     items = Item.query.filter_by(seller = current_user.id)
     return render_template('seller.html', items = items, username = current_user, form = seller_search, checkout_form = checkout_form)
+
