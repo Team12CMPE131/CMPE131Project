@@ -9,14 +9,14 @@
 8. Bid on item - Logan
 9. Compare Items - Logan
 10. Sort by options - Logan
-11. User Rating and review - Ece
-12. Changing Password - Ece
-13. Extra: Budget for the purchasing
+11. Change password option - Ece
+12. Seller page or See all items from all sellers - Ece
+13. Extra Feature - Budget
 
 
 ## Non-functional Requirements
 1. UI interactive interface
-2. scalability
+2. user security using hashcode for password
 3. usability
 4. compatibility
 
