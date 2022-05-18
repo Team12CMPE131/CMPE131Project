@@ -53,7 +53,55 @@ Wednesdays @ 8:30 PM
   - Logan
 
 - Team updates
+  - The group finished with the basic 4 equirements and added 6 more. We alked about MVP assignment.
 
+- Summary: 
+  - We discussed the errors that we're getting for the features that we're working on and solved them.
+  - We found out the format of Gantt Chart.
+  - We worked on the documentation.
+
+### 2022-05-11 at 8:30 PM
+- Attendence:
+  - Pranav
+  - Ece
+  - Logan
+
+- Team updates
+  - The team mainly worked on the functionality of our website and presentation.
+
+- Summary: 
+  - We discussed the seller page function and changed our rating item feature to change password.
+  - We demonstrated the website presentation.
+  - We worked on the errors that we got while showing the website and solved them.
+ 
+ ### 2022-05-15 at 8:30 PM
+- Attendence:
+  - Pranav
+  - Ece
+  - Logan
+  
+- Team updates
+  - We worked on the features that were left and testing.
+
+- Summary: 
+  - We worked on the previous milestones to revise our grade.
+  - We almost finished all of the functionality and web design.
+  - We worked on the testing.
+
+
+### 2022-05-16 at 8:30 PM
+- Attendence:
+  - Pranav
+  - Ece
+  - Logan
+ 
+- Team updates
+  - We completed the whole project and worked on mkdocs.
+
+- Summary: 
+  - We discussed the errors that we're getting for the website.
+  - We made sure that everything works perfectly.
+  - We worked on the mkdocs documentation.
 <!---
 ### 2022-04-27 at 10:30
 
