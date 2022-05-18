@@ -85,10 +85,7 @@ class Item(db.Model):
         '''
         self.seller = user.id
         db.session.commit()
-
         
-        
-
 class AuctionItem(Item):
     '''An SQLAlchemy for AuctionItem, a subclass of Item.
     
@@ -116,16 +113,19 @@ class AuctionItem(Item):
             price:
                 The price provided by the user.
         '''
-        if self.validate_time() and price >= super().price:
-            difference = float(price) - float(super().price)
-            user.budget -= difference
-            super().set_price(price + 1)
+        if self.validate_time() and price >= self.price:
+            user.budget -= self.price
+            if self.bid_owner: self.bid_owner -= self.price
+            self.set_price(price + 1)
             self.bid_owner = user.id
             db.session.commit()
     
     def handle_end(self):
         '''Sets the owner of the item.'''
-        super().set_owner(self.bid_owner)
+        self.set_owner(self.bid_owner)
+        self.seller = None
+        db.session.commit()
+        
         
 
     def remove_from_cart(self):
