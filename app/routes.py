@@ -11,8 +11,10 @@ from flask import render_template, redirect, request, flash, url_for
 from app import myapp, db
 from app.models import AuctionItem, Item,User 
 from flask_login import login_user, logout_user, login_required, current_user
+
 from app.forms import BidButton, register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton
 from app.forms import register, LoginForm, SearchForm, purchaseItemForm, addToCart, deleteUser, ListItemForm, CompareItemButton, deleteFromCart, SellerPageForm, changePasssword
+ 
 from random import choice
 from datetime import datetime, timedelta
 
@@ -258,8 +260,6 @@ def comparing(item1_id, item2_id):
     return render_template('comparing.html', price1=price1, item1=item1, item2=item2, purchase_form=purchase_form, add_to_cart = add_to_cart)
 
 
-
-
 @myapp.route('/seller_page)', methods = ['POST', 'GET'])
 def seller():
     
@@ -283,3 +283,4 @@ def seller():
         return render_template('seller.html', items = items, form = seller_search)
     items = Item.query.filter_by(seller = current_user.id)
     return render_template('seller.html', items = items, username = current_user, form = seller_search, checkout_form = checkout_form)
+
